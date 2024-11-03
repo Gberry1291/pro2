@@ -1,0 +1,19 @@
+<div class="page">
+
+    <div class="maintile pvptile">
+        <p class="pvpitem">New PvP game</p>
+        <input class="pvpitem" (input)="fillsuggestions()" [formControl]="oppemail" type="email" placeholder="Opp email">
+        <div class="suggestionslide" [@showsug]="{value: showsug}">
+            <p (click)="fillinput(suggestion1)">{{suggestion1}}</p>
+            <p (click)="fillinput(suggestion2)">{{suggestion2}}</p>
+            <p (click)="fillinput(suggestion3)">{{suggestion3}}</p>
+            <p (click)="fillinput(suggestion4)">{{suggestion4}}</p>
+        </div>
+        <button class="pvpitem" (click)="sendchallenge()" [ngClass]="[buttonclass]" >Send Challenge!</button>
+    </div>
+
+    <div class="maintile">
+        <p class="pvpitem">New Game vs Ai</p>
+    </div>
+
+</div>

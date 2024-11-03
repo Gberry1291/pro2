@@ -1,0 +1,26 @@
+<div class="showlogbutton" (click)="onClick('toglog')" [@showlog]="animateslide()">
+    <div class="showloghouse">
+        <div class="showlogbuttonicon"></div>
+    </div>
+</div>
+<div *ngIf="undobutton()" (click)="onClick('undolast')" class="undo">
+    <div class="b1"></div>
+    <div class="b2"></div>
+    <div class="b3"></div>
+    <div class="icon undoicon"></div>
+    <p class="buttontext">Undo</p>
+</div>
+<div *ngIf="savebutton()" class="save">
+    <div class="b1"></div>
+    <div class="b2"></div>
+    <div class="b3"></div>
+    <div class="icon saveicon"></div>
+    <p class="buttontext">Save</p>
+</div>
+<div *ngIf="returntostartbutton()" (click)="onClick('undoTofirst')" class="returntostart">
+    <div class="b1"></div>
+    <div class="b2"></div>
+    <div class="b3"></div>
+    <div class="icon returnicon"></div>
+    <p class="buttontext">Return to start</p>
+</div>

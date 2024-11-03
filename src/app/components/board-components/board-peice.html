@@ -1,0 +1,3 @@
+<div [ngClass]="[square().player , square().peice]" [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"></div>
+<div [ngClass]="[square().player+'background',square().peice+'background']" [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"></div>
+<div [ngClass]="[square().peice+'shadow']" [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"></div>

@@ -1,0 +1,613 @@
+.displayoff{
+    display: none;
+}
+.displayon{
+    display: block;
+}
+
+
+.save{
+    border-radius: 5px;
+}
+.save:hover .saveicon{
+    background-color: var(--savehovercolor);
+}
+.saveicon{
+    clip-path:var(--saveclip);
+    background-color: var(--saveiconBcolor);
+    transition:background-color 1s;
+}
+.undo{
+    border-radius: 5px;
+}
+.undo:hover .undoicon{
+    background-color: var(--savehovercolor);
+}
+.undoicon{
+    clip-path:var(--undoclip);
+    background-color: var(--saveiconBcolor);
+    transition:background-color 1s;
+}
+.returntostart{
+    border-radius: 5px;
+}
+.returnicon{
+    clip-path:var(--undoclip);
+    background-color: var(--saveiconBcolor);
+    transition:background-color 1s;
+}
+.returntostart:hover .returnicon{
+    background-color: var(--savehovercolor);
+}
+
+
+.showlogbutton{
+    z-index: 20;
+    display: flex;
+}
+.showlogbutton:hover .showloghouse{
+    background-color: var(--showloghover);
+}
+.showloghouse{
+    margin: auto;
+    position: relative;
+    width:98%;
+    aspect-ratio: 1/1;
+    background-color: var(--showloghouse);
+    border-radius: 50px;
+    transition:background-color 1s;
+}
+.showlogbuttonicon{
+    clip-path: var(--showlogiconclip);
+    background-color: var(--showlogbuttonicon);
+    height: 100%;
+    width:100%;
+}
+.movelog{
+    position: absolute;
+    top:12%;
+    left:-1%;
+    width:0%;
+    height:88%;
+    background-image: var(--movementlogB);
+    overflow-y: scroll;
+    display: block;
+    z-index: 10;
+    border-right:5px solid black;
+
+}
+.board{
+    position: absolute;
+    top:12%;
+    aspect-ratio: 1/1;
+    display: grid;
+    grid-template-rows: repeat(8,12.5%);
+    grid-template-columns: repeat(8,12.5%);
+}
+@media only screen and (orientation: landscape) {
+    .board{
+        height:80%;
+        --widthA: calc(100vw - 80vh);
+        left:calc(var(--widthA) / 2);
+    }
+    .buttonhouse{
+        position: absolute;
+        top:12%;
+        --widthA: calc(100vw - 80vh);
+        width:calc(var(--widthA) / 2);
+        height:90%;
+    }
+    .showlogbutton{
+        position: absolute;
+        width:50%;
+        aspect-ratio: 2/3;
+        max-width: 100px;
+    }
+    .save{
+        display: flex;
+        position: absolute;
+        top:33%;
+        left:1%;
+        width:95%;
+        max-width:200px;
+        aspect-ratio: 2/1;
+        border-radius:10px;
+        box-shadow: 5px 5px 10px black;
+        background-color: var(--buttoncolor);
+    }
+    .undo{
+        display: flex;
+        position: absolute;
+        top:66%;
+        left:1%;
+        width:95%;
+        max-width: 200px;
+        aspect-ratio: 2/1;
+        text-align: center;
+        border-radius:10px;
+        box-shadow: 5px 5px 10px black;
+        background-color: var(--buttoncolor);
+    }
+    .returntostart{
+        display: flex;
+        position: absolute;
+        top:33%;
+        left:1%;
+        width:95%;
+        max-width:200px;
+        aspect-ratio: 2/1;
+        border-radius:10px;
+        box-shadow: 5px 5px 10px black;
+        background-color: var(--buttoncolor);
+    }
+    .b1{
+        position: absolute;
+        left:0%;
+        top:0%;
+        height:100%;
+        width:100%;
+        clip-path:var(--b1clip);
+        background-color: black;
+    }
+    .b2{
+        position: absolute;
+        left:0%;
+        top:0%;
+        height:100%;
+        width:100%;
+        background-color: var(--b2color);
+        clip-path:var(--b2clip);
+    }
+    .b3{
+        position: absolute;
+        left:0%;
+        top:0%;
+        height:100%;
+        width:100%;
+        background-color: var(--b2color);
+        clip-path: var(--b3clip);
+    }
+    .icon{
+        position: relative;
+        top:5%;
+        left:0%;
+        height:90%;
+        aspect-ratio: 1/1;
+    }
+    .buttontext{
+        position: relative;
+        margin:auto;
+        font-size: 2vw;
+        background-color: var(--buttontextB);
+    }
+  }
+@media only screen and (orientation: portrait) {
+    @media (min-aspect-ratio:4/5){
+        .board{
+            width:90%;
+            left:9%;
+        }
+        .buttonhouse{
+            position: absolute;
+            top:12%;
+            width:9%;
+            height:calc(90vw);
+        }
+        .showlogbutton{
+            position: absolute;
+            top:0%;
+            width:100%;
+            aspect-ratio: 2/3;
+        }
+        .save{
+            position:absolute;
+            top:37%;
+            left:1%;
+            width:95%;
+            height:27%;
+            text-align: center;
+            background-color: var(--middlebuttonB);
+            border-radius:10px;
+            box-shadow: 5px 5px 10px black;
+        }
+        .undo{
+            position: absolute;
+            top:74%;
+            left:1%;
+            width:95%;
+            height:26%;
+            text-align: center;
+            background-color: var(--middlebuttonB);
+            border-radius:10px;
+            box-shadow: 5px 5px 10px black;
+        }
+        .returntostart{
+            position:absolute;
+            top:37%;
+            left:1%;
+            width:95%;
+            height:27%;
+            text-align: center;
+            background-color: var(--middlebuttonB);
+            border-radius:10px;
+            box-shadow: 5px 5px 10px black;
+        }
+        .icon{
+            position: relative;
+            top:10%;
+            left:3%;
+            width:90%;
+            aspect-ratio: 1/1;
+        }
+        .buttontext{
+            position: relative;
+            font-size: 3vw;
+        }
+    }
+    @media (max-aspect-ratio: 4/5) {
+        .board{
+            width:100%;
+            left:0%;
+        }
+        .buttonhouse{
+            --BoardBottom: calc(12vh + 100vw);
+            --SpaceUnderBoard: calc(100vh - var(--BoardBottom));
+            position: absolute;
+            top:var(--BoardBottom);
+            width:100%;
+            height:var(--SpaceUnderBoard);
+            display: flex;
+            justify-content: space-between;
+        }
+        .showlogbutton{
+            position: relative;
+            top:0%;
+            left:0%;
+            height:100%;
+            width:10%;
+        }
+        .save{
+            position: relative;
+            top:5%;
+            height:90%;
+            aspect-ratio: 3/2;
+            text-align: center;
+            display: flex;
+            border-radius:10px;
+            box-shadow: 5px 5px 10px black;
+            background-color: var(--buttoncolor);
+        }
+        .undo{
+            position: relative;
+            top:5%;
+            height:90%;
+            aspect-ratio: 3/2;
+            text-align: center;
+            display: flex;
+            border-radius:10px;
+            box-shadow: 5px 5px 10px black;
+            background-color: var(--buttoncolor);
+        }
+        .returntostart{
+            position: relative;
+            top:5%;
+            height:90%;
+            aspect-ratio: 3/2;
+            text-align: center;
+            display: flex;
+            border-radius:10px;
+            box-shadow: 5px 5px 10px black;
+            background-color: var(--buttoncolor);
+        }
+        .b1{
+            position: absolute;
+            left:0%;
+            top:0%;
+            height:100%;
+            width:100%;
+            clip-path:var(--b1clip);
+            background-color: var(--b1color);
+        }
+        .b2{
+            position: absolute;
+            left:0%;
+            top:0%;
+            height:100%;
+            width:100%;
+            clip-path:var(--b2clip);
+            background-color: var(--b2color);
+        }
+        .b3{
+            position: absolute;
+            left:0%;
+            top:0%;
+            height:100%;
+            width:100%;
+            clip-path:var(--b3clip);
+            background-color: var(--b3color);
+        }
+        .icon{
+            position: relative;
+            top:5%;
+            left:5%;
+            height:90%;
+            aspect-ratio: 1/1;
+        }
+        .buttontext{
+            position: relative;
+            margin:auto;
+            font-size: 4vw;
+            background-color: var(--buttontextB);
+            border-radius: 5px;
+        }
+
+    }
+}
+
+
+.whitespace{
+    border:1px solid black;
+    width: 100%;
+    height: 100%;
+    background-color: var(--whitespacecolor);
+}
+.blackspace{
+    border:1px solid black;
+    color:white;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blackspacecolor);
+}
+.legalspace{
+    border:1px solid black;
+    background-color: var(--legalspacecolor);
+    width: 100%;
+    height: 100%;
+}
+.Q{
+    position: relative;
+    width:95%;
+    margin-top:2%;
+    margin-left:2%;
+    aspect-ratio: 1/1;
+    z-index: 2;
+    clip-path: var(--Qclip)
+}
+.Qbackground{
+    aspect-ratio: 1/1; 
+    margin-top: -95%; 
+    width:95%;
+    margin-left:2%;
+    z-index: 1;
+    clip-path:var(--Qbackground);
+}
+.Qshadow{
+    aspect-ratio: 1/1; 
+    margin-top: -96%; 
+    width:95%;
+    margin-left:2%;
+    background-image: var(--peiceshadowcolor);
+    clip-path:var(--Qshadow)
+}
+.C{
+    position: relative;
+    margin-left: 0%;
+    margin-top: 0%;
+    width:100%;
+    aspect-ratio: 1/1; 
+    z-index: 2;
+    clip-path: var(--Cclip);
+}
+.Cbackground{
+    margin-left: 0%;
+    margin-top: -100%;
+    width:100%;
+    aspect-ratio: 1/1; 
+    z-index: 1;
+    clip-path: var(--Cbackground);
+}
+.Cshadow{
+    aspect-ratio: 1/1; 
+    margin-top: -100%; 
+    width:100%;
+    margin-left:0%;
+    background-image: var(--peiceshadowcolor);
+    clip-path:var(--Cshadow);
+}
+.H{
+    position: relative;
+    margin-left: 10%;
+    margin-top: 10%;
+    width:80%;
+    aspect-ratio: 1/1;
+    z-index: 2;
+    clip-path:var(--Hclip);
+}
+.Hbackground{
+    position: relative;
+    width:80%;
+    aspect-ratio: 1/1; 
+    margin-left: 10%;
+    margin-top: -80%;
+    z-index: 1;
+    clip-path:var(--Hbackground)
+}
+.Hshadow{
+    position: relative;
+    aspect-ratio: 1/1; 
+    margin-top: -80%; 
+    width:80%;
+    margin-left:10%;
+    background-image: var(--peiceshadowcolor);
+    clip-path:var(--Hshadow);
+}
+.B{
+    position: relative;
+    margin-left: 10%;
+    margin-top: 10%;
+    width:80%;
+    aspect-ratio: 1/1;
+    z-index: 2;
+    clip-path:var(--Bclip);
+}
+.Bbackground{
+    position: relative;
+    width:80%;
+    aspect-ratio: 1/1; 
+    margin-left: 10%;
+    margin-top: -80%;
+    z-index: 1;
+    clip-path:var(--Bbackground)
+}
+.Bshadow{
+    position: relative;
+    width:80%;
+    aspect-ratio: 1/1; 
+    margin-left: 10%;
+    margin-top: -80%;
+    background-image: var(--peiceshadowcolor);
+    clip-path:var(--Bshadow);
+}
+.K{
+    position: relative;
+    width:95%;
+    margin-top:2%;
+    margin-left:2%;
+    aspect-ratio: 1/1;
+    z-index: 2;
+    clip-path:var(--Kclip)
+}
+.Kbackground{
+    aspect-ratio: 1/1; 
+    margin-top: -95%; 
+    width:95%;
+    margin-left:2%;
+    z-index: 1;
+    clip-path:var(--Kbackground)
+}
+.Kshadow{
+    aspect-ratio: 1/1; 
+    margin-top: -96%; 
+    width:95%;
+    margin-left:2%;
+    background-image: var(--peiceshadowcolor);
+    clip-path:var(--Kshadow)
+}
+.P{
+    position: relative;
+    margin-left: 20%;
+    margin-top: 20%;
+    width:60%;
+    aspect-ratio: 1/1; 
+    z-index: 2;
+    clip-path: var(--Pclip)
+}
+.Pbackground{
+    position: relative;
+    width:60%;
+    aspect-ratio: 1/1; 
+    margin-left: 20%;
+    margin-top: -60%;
+    z-index: 1;
+    clip-path: var(--Pbackground)
+}
+.Pshadow{
+    position: relative;
+    aspect-ratio: 1/1; 
+    margin-top: -60%; 
+    width:60%;
+    margin-left:20%;
+    background-image: var(--peiceshadowcolor);
+    clip-path:var(--Pshadow)
+}
+.player1{
+    background-image: var(--playeronepeicecolor);
+}
+.player2{
+    background-image:var(--playertwopeicecolor) ;
+}
+.player1background{
+    background-color: var(--peiceBcolor1);
+}
+.player2background{
+    background-color: var(--peiceBcolor2);
+}
+.selected{
+    background-color: var(--selectedcolor);
+}
+.screen{
+    position: absolute;
+    left:0px;
+    top:0px;
+    height:100%;
+    width:100%;
+    background-color:rgb(0, 0, 0,.8);
+    z-index: 5;
+    display: flex;
+}
+.propeices{
+    display: grid;
+    height:30%;
+    aspect-ratio: 4/1;
+    grid-template-columns: auto auto auto auto;
+}
+.pickwindow{
+    margin: auto;
+    padding:5%;
+    background-color: var(--pickwindowback);
+}
+.notvisible{
+    display: none;
+}
+
+
+.cube{
+    position: relative;
+    height:100%;
+    aspect-ratio: 1/1;
+}
+.logitem{
+    position: relative;
+    display: inline-flex;
+    width:100%;
+    height: 10%;
+    justify-content: space-between;
+    border-top:var(--logitemline);
+}
+.logspacestart{
+    position: relative;
+    height:100%;
+    aspect-ratio: 1/1;
+}
+.logpeicestart{
+    position: relative;
+    height:100%;
+    width:100%;
+}
+.logtext{
+    margin:0%;
+    position: relative;
+    text-align: center;
+}
+.arrow{
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--arrowcolor);
+    clip-path:var(--arrowclip);
+}
+.sword{
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--swordcolor);
+    clip-path:var(--swordclip)
+}
+.logspaceend{
+    position: relative;
+    height:100%;
+    aspect-ratio: 1/1;
+}
+.logpeiceend{
+    position: relative;
+    height:100%;
+    width:100%;
+}

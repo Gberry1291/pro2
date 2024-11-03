@@ -1,0 +1,50 @@
+.page{
+    position:absolute;
+    top:10%;
+    height:90%;
+    width:100%;
+    display: grid;
+}
+.maintile{
+    border:2px solid var(--navbackgroundColor);
+    background-color: var(--bodycolor);
+    border-radius: 10px;
+    margin: auto;
+}
+.suggestionslide{
+    width:100%;
+    height:0%;
+    background-color: grey;
+    overflow: hidden;
+}
+.pvpitem{
+    margin-left: 15%;
+    width:70%;
+    text-align: center;
+}
+.displayoff{
+    display:none;
+}
+
+@media only screen and (orientation: landscape) {
+    .page{
+        grid-template-columns: auto auto;
+    }
+    .maintile{
+        width:40%;
+        height:30%;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .page{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+    .maintile{
+        width:60%;
+        height:50%;
+        margin: auto;
+    }
+
+}

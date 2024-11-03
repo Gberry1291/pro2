@@ -1,0 +1,24 @@
+<div class="logbody">
+    <div class="logoptions">
+
+        <h1 class="signinH">Sign In</h1>
+
+        <button class="googlebutton" (click)="signInWithGoogle()">
+            <img class="googleimg" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+            <p class="googletext">Continue with Google</p>
+        </button>
+
+        <h2 class="signinor">Or</h2>
+        
+        <div class="createnew">
+            <p class="createnewtext">Create/login with us</p>
+            <input class="inputsign item2" [formControl]="email" type="email" placeholder="email">
+            <input class="inputsign item3"  [formControl]="password" type="text" placeholder="password">
+            <button class="inputbutton item4"  (click)="login()"><p class="buttontext">Login</p></button>
+            <button class="inputbutton item5"  (click)="signup()"><p class="buttontext">Create Account</p></button>
+        </div>
+
+
+    </div>
+</div>
+

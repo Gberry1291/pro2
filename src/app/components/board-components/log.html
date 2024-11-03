@@ -1,0 +1,26 @@
+<div class="movelog" [@showlog]="animateslide()">
+    <div class="logitem" *ngFor="let logitem of log()">
+        <div class="logspacestart">
+            <div [ngClass]="outPutColor(logitem.start)">
+                <div [ngClass]="[logitem.startpeice,logitem.startplayer]"></div>
+                <div [ngClass]="[(logitem.startpeice+'background'),(logitem.startplayer+'background')]"></div>
+            </div>
+        </div>
+        <div class="logtext">
+            <p class="logtext">{{convertLocation(logitem.start)}}</p>
+        </div>
+        <div *ngIf="logitem.endpeice==''; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock><div class="arrow"></div></ng-template>
+        <ng-template #elseBlock><div class="sword"></div></ng-template>
+
+        <div class="logspaceend">
+            <div [ngClass]="outPutColor(logitem.end)">
+                <div [ngClass]="[logitem.endpeice,logitem.endplayer]"></div>
+                <div [ngClass]="[(logitem.endpeice+'background'),(logitem.endplayer+'background')]"></div>
+            </div>
+        </div>
+        <div class="logtext">
+            <p class="logtext">{{convertLocation(logitem.end)}}</p>
+        </div>
+    </div>
+</div>
