@@ -1,0 +1,246 @@
+.settingspage{
+    position: absolute;
+    top:10%;
+    height:90%;
+    width:100%;
+}
+.settingshouse{
+    position: relative;
+    height:100%;
+    width:100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 34% 33% 33%;
+}
+.settingsitem{
+    position: relative;
+    height:100%;
+    width:100%;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.themeitem{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    box-sizing: border-box;
+}
+.themetitle{
+    position: relative;
+    height: 100%;
+    width:90%;
+    margin-left:5%;
+    box-sizing: border-box;
+    line-break: anywhere;
+    display: flex;
+}
+.themedrop{
+    position: relative;
+    top:25%;
+    width:100%;
+    height:50%;
+    margin: 0%;
+    overflow: visible;
+    border-radius:10px;
+    transition: background-color 1s;
+}
+.topoption{
+    position: relative;
+    top:0%;
+    width:100%;
+    height:100%;
+    box-sizing: border-box;
+    display: flex;
+    text-align: center;
+}
+.optionhouse{
+    position: relative;
+    width:100%;
+    height:0%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+    border-radius:10px;
+}
+.open{
+    z-index: 5;
+}
+.themeoption{
+    width:100%;
+    height:100%;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+}
+.themeexample{
+    height:100%;
+    width:100%;
+}
+.minisite{
+    position: relative;
+    left:25%;
+    width:50%;
+    top:5%;
+    height:90%;
+    border: 2px solid black;
+}
+
+
+.simpletile{
+    border:2px solid #4cb69f;
+}
+/* .simplepeice1{
+    background-image: linear-gradient(
+        45deg,
+        rgb(154, 115, 71) 0% 5%,
+        rgb(131, 92, 3) 5% 10%,
+        rgb(154, 115, 71) 10% 11%,
+        rgb(131, 92, 3) 11% 15%,
+        rgb(154, 115, 71) 15% 20%,
+        rgb(131, 92, 3) 20% 25%,
+        rgb(154, 115, 71) 25% 26%,
+        rgb(131, 92, 3) 26% 27%,
+        rgb(154, 115, 71) 27% 28%,
+        rgb(131, 92, 3) 28% 29%,
+        rgb(154, 115, 71) 29% 30%,
+        rgb(131, 92, 3) 30% 31%,
+        rgb(154, 115, 71) 31% 32%,
+        rgb(131, 92, 3) 32% 35%,
+        rgb(154, 115, 71) 35% 40%,
+        rgb(131, 92, 3) 40% 41%,
+        rgb(154, 115, 71) 41% 46%,
+        rgb(131, 92, 3) 46% 51%,
+        rgb(154, 115, 71),
+        rgb(131, 92, 3),
+        rgb(154, 115, 71),
+        rgb(131, 92, 3),
+        rgb(154, 115, 71),
+        rgb(131, 92, 3),
+        rgb(154, 115, 71),
+        rgb(131, 92, 3),
+        rgb(154, 115, 71)
+    );
+}
+.simplepeice2{
+    background-image: linear-gradient(
+        rgba(90, 14, 0) 0% 5%,
+        rgb(79, 7, 7) 5% 10%,
+        rgb(52, 14, 14) 10% 11%,
+        rgb(79, 7, 7) 11% 13%,
+        rgba(90, 14, 0) 13% 16%,
+        rgb(79, 7, 7) 16% 20%,
+        rgb(52, 14, 14) 20% 23%,
+        rgb(79, 7, 7) 23% 26%,
+        rgb(52, 14, 14) 26% 30%,
+        rgb(79, 7, 7) 30% 34%,
+        rgb(52, 14, 14) 34% 38%,
+        rgb(79, 7, 7) 38% 44%,
+        rgb(52, 14, 14) 44% 47%,
+        rgb(79, 7, 7) 47% 50%,
+        rgba(90, 14, 0) 50% 53%,
+        rgb(52, 14, 14) 53% 55%,
+        rgba(90, 14, 0) 55% 59%,
+        rgb(79, 7, 7) 59% 63%,
+        rgba(90, 14, 0) 63% 68%,
+        rgb(52, 14, 14) 68% 73%,
+        rgba(90, 14, 0) 73% 77%,
+        rgb(79, 7, 7) 77% 80%,
+        rgb(52, 14, 14) 80% 85%,
+        rgba(90, 14, 0) 85% 90%,
+        rgb(79, 7, 7) 90% 92%,
+        rgba(90, 14, 0) 92% 95%,
+        rgb(79, 7, 7) 95% 100%
+         );
+}
+.simpleinside{
+    background-color: white;
+} */
+
+
+
+.mininav{
+    height:10%;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+.left{
+    width:40%;
+}
+.middle{
+    width:20%;
+    display: flex;
+}
+.right{
+    width:40%;
+    justify-content: end;
+}
+.mininavitem{
+    display:flex;
+    text-decoration: none;
+    position: relative;
+    top:5%;
+    height: 90%;
+    margin-left: 5%;
+    margin-right:5%;
+    padding-left:2%;
+    padding-right:2%;
+    text-align: center;
+}
+.mininavtext{
+    position: relative;
+    margin:auto;
+    font-size: .1rem;
+}
+.minibody{
+    position:relative;
+    top:0%;
+    height:90%;
+    width:100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    box-sizing: border-box;
+}
+.maintile{
+    border-radius: 10px;
+    margin: auto;
+    width:60%;
+    height:50%;
+    margin: auto;
+    box-sizing: border-box;
+}
+.armygrid{
+    height:100%;
+    width:100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+}
+.space{
+    height:80%;
+    aspect-ratio: 1/1;
+    margin: auto;
+}
+.peice{
+    position: relative;
+    height:100%;
+    aspect-ratio: 1/1;
+    z-index: 1;
+}
+.background{
+    position: relative;
+    top:-100%;
+    height: 100%;
+    width:100%;
+}
+.shadow{
+    position: relative;
+    top:-200%;
+    height: 100%;
+    width:100%;
+}
+.transitioncolor{
+    transition:color 1s;
+}

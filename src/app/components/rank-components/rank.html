@@ -1,0 +1,28 @@
+<div [ngClass]="['rankpage',('bodycolor'+selectedstyle())]">
+
+
+    <div class="titlehouse">
+        <p class="centertext">{{worddic()[0]}}</p>
+    </div>
+
+    <div class="rankhouse">
+        <div class="rankinglist" *ngFor="let square of newlist();index as i;even as even;">
+            <div *ngIf="even" [ngClass]="['rankitem',('maintextcolor'+selectedstyle()),('mainbackgroundcolor'+selectedstyle())]">
+                <div  class="left"><p class="ranktext">{{(page()*10)+i+1}}</p></div>
+                <div class="left"><p class="ranktext">{{square[0]}}</p></div>
+                <div class="right"><p class="ranktext">{{square[1]}}</p></div>
+            </div>
+            <div *ngIf="!even" [ngClass]="['rankitem',('maintextcolor'+selectedstyle()),('secondbackgroundcolor'+selectedstyle())]">
+                <div  class="left"><p class="ranktext">{{(page()*10)+i+1}}</p></div>
+                <div class="left"><p class="ranktext">{{square[0]}}</p></div>
+                <div class="right"><p class="ranktext">{{square[1]}}</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nexthouse">
+        <div [ngClass]="['prev',prev(),('mainbackgroundcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="prevpage()" ></div>
+        <div [ngClass]="['next',next(),('mainbackgroundcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="nextpage()"></div>
+    </div>
+
+</div>

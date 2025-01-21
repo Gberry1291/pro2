@@ -1,25 +1,50 @@
-<div id="nav" class="flex">
+<div id="nav" [ngClass]="['flex',('navgradient'+selectedstyle()),('mainbackgroundcolor'+selectedstyle())]">
     <div class="flex left">
-        <a class="navitem" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><p class="navtext">Home</p></a>
-        <a class="navitem" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><p class="navtext">Open Games</p></a>
-    </div>
-    <div class="middle">
-        <div class="logo">{{this.user().username}}</div>
-    </div>
-    <div class="flex right">
-        <!-- @if(this.user()){
-            <div class="navitem">Settings</div>
-            <div (click)="logOut()" class="navitem"><p>Logout</p></div>
-        }@else{
-            <a class="navitem" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page"><p class="navtext">Login</p></a>
-        } -->
-        @if(this.user().username!=""){
-            <div class="navitem"><p>Settngs</p></div>
-            <div (click)="logOut()" class="navitem"><p>Logout</p></div>
-        }@else{
-            <a class="navitem" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page"><p class="navtext">
-                login
-            </p></a>
+        @if(this.user()){
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <p class="navtext">{{worddic()[0]}}</p>
+            </a>
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/opengames" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <p class="navtext">{{worddic()[1]}}</p>
+            </a>
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/rank" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <p class="navtext">{{worddic()[2]}}</p>
+            </a>
         }
+    </div>
+    <a routerLink="/" class="middle">
+        <div [ngClass]="['logo',('logo'+selectedstyle()),('bodycolor'+selectedstyle())]"></div>
+    </a>
+    <div class="flex right">
+        <div [ngClass]="['languageitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" (click)="slidelanguage()">
+            <p class="languagetext">Language</p>
+            <p class="languagetext">sprache</p>
+            <p class="languagetext">Langue</p>
+        </div>
+        @if(this.user()){
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/settings" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <p class="navtext">{{worddic()[3]}}</p>
+            </a>
+            <div (click)="logOut()" [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]">
+                <p class="navtext">{{worddic()[4]}}</p>
+            </div>
+        }@else{
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <p class="navtext">
+                    {{worddic()[5]}}
+                </p>
+            </a>
+        }
+    </div>
+    <div [ngClass]="['languageslide',('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" [@showlanguage]="{value: showlanguage}">
+        <div [ngClass]="['languageoption',('mainbackgroundcolor'+selectedstyle())]" (click)="languagechange('eng')">
+            <p class="centertext">English</p>
+        </div>
+        <div [ngClass]="['languageoption',('mainbackgroundcolor'+selectedstyle())]" (click)="languagechange('de')">
+            <p class="centertext">Deutsch</p>
+        </div>
+        <div [ngClass]="['languageoption',('mainbackgroundcolor'+selectedstyle())]" (click)="languagechange('fr')">
+            <p class="centertext">Français</p>
+        </div>
     </div>
 </div>

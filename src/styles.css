@@ -7,3 +7,350 @@ html{
 body{
     box-sizing: border-box;
 }
+.centertext{
+    margin: auto;
+}
+
+
+.bodycolorsimple{
+    background-color: white;
+}
+.mainbackgroundcolorsimple{
+    background-color:#4cb69f;
+}
+.secondbackgroundcolorsimple{
+   background-color: rgb(60, 55, 106);
+}
+
+.bodytextcolorsimple{
+    color:black;
+}
+.maintextcolorsimple{
+    color:white;
+}
+.secondbodytextcolorsimple{
+    color:#4cb69f;
+}
+
+.navgradientsimple{
+    background-image: linear-gradient();
+}
+.navitemgradientsimple{
+    background-image: linear-gradient();
+}
+.navitemclipsimple{
+    clip-path: none;
+}
+
+.navitemsimple:hover{
+    background-color:#cae7e0;
+}
+.hovertomainsimple:hover{
+    background-color: #4cb69f;
+}
+.hovertosecondsimple:hover{
+   background-color: rgb(60, 55, 106);
+}
+.hovertobodysimple:hover{
+    background-color: white;
+}
+.hovertobodytextsimple:hover{
+    color:#4cb69f;
+}
+.hovertomaintextsimple:hover{
+    color:white
+}
+.suggsimple:hover{
+    background-color:#cae7e0;
+}
+.hovertobodysimple:hover .buttontext{
+    color: #4cb69f;
+}
+#nav:hover .logosimple{
+    background-color: rgb(60, 55, 106);
+}
+
+.maintilesimple{
+    border:2px solid #4cb69f;
+}
+.suggbordersimple{
+    border-top:1px solid white;
+}
+
+.secondmainbordersimple{
+    border: 1px solid rgb(60, 55, 106);
+}
+
+.whitespacesimple{
+    background-color: rgb(255, 248, 192);
+}
+.blackspacesimple{
+    background-color:rgb(100, 134, 59) ;
+}
+.legalspacesimple{
+    background-color: rgba(248, 248, 138, 0.886);
+}
+.player1colorsimple{
+    background-image:linear-gradient(
+        rgba(90, 14, 0) 0% 5%,
+        rgb(79, 7, 7) 5% 10%,
+        rgb(52, 14, 14) 10% 11%,
+        rgb(79, 7, 7) 11% 13%,
+        rgba(90, 14, 0) 13% 16%,
+        rgb(79, 7, 7) 16% 20%,
+        rgb(52, 14, 14) 20% 23%,
+        rgb(79, 7, 7) 23% 26%,
+        rgb(52, 14, 14) 26% 30%,
+        rgb(79, 7, 7) 30% 34%,
+        rgb(52, 14, 14) 34% 38%,
+        rgb(79, 7, 7) 38% 44%,
+        rgb(52, 14, 14) 44% 47%,
+        rgb(79, 7, 7) 47% 50%,
+        rgba(90, 14, 0) 50% 53%,
+        rgb(52, 14, 14) 53% 55%,
+        rgba(90, 14, 0) 55% 59%,
+        rgb(79, 7, 7) 59% 63%,
+        rgba(90, 14, 0) 63% 68%,
+        rgb(52, 14, 14) 68% 73%,
+        rgba(90, 14, 0) 73% 77%,
+        rgb(79, 7, 7) 77% 80%,
+        rgb(52, 14, 14) 80% 85%,
+        rgba(90, 14, 0) 85% 90%,
+        rgb(79, 7, 7) 90% 92%,
+        rgba(90, 14, 0) 92% 95%,
+        rgb(79, 7, 7) 95% 100%
+    );
+}
+.player2colorsimple{
+    background-image: linear-gradient(
+        45deg,
+        rgb(154, 115, 71) 0% 5%,
+        rgb(131, 92, 3) 5% 10%,
+        rgb(154, 115, 71) 10% 11%,
+        rgb(131, 92, 3) 11% 15%,
+        rgb(154, 115, 71) 15% 20%,
+        rgb(131, 92, 3) 20% 25%,
+        rgb(154, 115, 71) 25% 26%,
+        rgb(131, 92, 3) 26% 27%,
+        rgb(154, 115, 71) 27% 28%,
+        rgb(131, 92, 3) 28% 29%,
+        rgb(154, 115, 71) 29% 30%,
+        rgb(131, 92, 3) 30% 31%,
+        rgb(154, 115, 71) 31% 32%,
+        rgb(131, 92, 3) 32% 35%,
+        rgb(154, 115, 71) 35% 40%,
+        rgb(131, 92, 3) 40% 41%,
+        rgb(154, 115, 71) 41% 46%,
+        rgb(131, 92, 3) 46% 51%,
+        rgb(154, 115, 71),
+        rgb(131, 92, 3),
+        rgb(154, 115, 71),
+        rgb(131, 92, 3),
+        rgb(154, 115, 71),
+        rgb(131, 92, 3),
+        rgb(154, 115, 71),
+        rgb(131, 92, 3),
+        rgb(154, 115, 71)
+    )
+}
+.player1Bsimple{
+    background-color: white;
+}
+.player2Bsimple{
+    background-color: white;
+}
+.player1shadowsimple{
+    background-image: linear-gradient(
+        315deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5),
+        rgb(55, 55, 55,.5),
+        rgba(135, 135, 135, 0.5) 
+    );
+}
+.player2shadowsimple{
+    background-image: linear-gradient(
+        315deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5),
+        rgb(55, 55, 55,.5),
+        rgba(135, 135, 135, 0.5) 
+    );
+}
+.selectedcolorsimple{
+    background-color:rgba(116, 116, 116, 0.886) ;
+}
+.pickwindowbacksimple{
+    background-color: white;
+}
+
+.saveiconBcolorsimple{
+    background-color:rgb(255, 255, 255,.2);
+}
+.savesimple:hover .saveicon{
+    background-color: #cae7e0;
+}
+.undosimple:hover .undoicon{
+    background-color: #cae7e0;
+}
+.returntostartsimple:hover .returnicon{
+    background-color: #cae7e0;
+}
+.buttontextsimple{
+    background-color:rgba(255, 255, 255, 0) ;
+}
+
+.showlogbuttonsimple:hover .showloghouse{
+    background-color: rgb(32, 29, 58);
+}
+.movementloggradientsimple{
+    background-image:linear-gradient(#4cb69f,#62cfb6,white) ;
+}
+.bordersimple{
+    border-top:1px solid rgb(32, 29, 58,.3);
+}
+
+
+
+
+.bodycolorprogrammer{
+    background-color: #3B3B3B;
+}
+.mainbackgroundcolorprogrammer{
+    background-color:#080808;
+}
+.secondbackgroundcolorprogrammer{
+   background-color: rgb(179, 179, 179);
+}
+
+.bodytextcolorprogrammer{
+    color:rgb(237, 207, 108);
+}
+.maintextcolorprogrammer{
+    color:rgb(43, 168, 218);
+}
+.secondbodytextcolorprogrammer{
+    color:rgb(236, 146, 78);
+}
+
+.navgradientprogrammer{
+    background-image: linear-gradient();
+}
+.navitemgradientprogrammer{
+    background-image: linear-gradient();
+}
+.navitemclipprogrammer{
+    clip-path: none;
+}
+
+.navitemprogrammer:hover{
+    background-color:#3B3B3B;
+}
+.hovertomainprogrammer:hover{
+    background-color: #080808;
+}
+.hovertosecondprogrammer:hover{
+   background-color: rgb(179, 179, 179);
+}
+.hovertobodyprogrammer:hover{
+    background-color: #3B3B3B;
+}
+.hovertobodytextsimple:hover{
+    color:#080808;
+}
+.hovertomaintextprogrammer:hover{
+    color:rgb(67, 206, 127);
+}
+.suggprogrammer:hover{
+    background-color:#080808;
+}
+.hovertobodyprogrammer:hover .buttontext{
+    color:rgb(67, 206, 127);
+}
+#nav:hover .logoprogrammer{
+    background-color: rgb(216, 227, 0);
+}
+
+.maintileprogrammer{
+    border:2px solid rgb(186, 12, 224);
+}
+.suggborderprogrammer{
+    border-top:1px solid #3B3B3B;
+}
+
+.secondmainborderprogrammer{
+    border: 1px solid rgb(179, 179, 179);
+}
+
+.whitespaceprogrammer{
+    background-color: rgb(184, 184, 184);
+}
+.blackspaceprogrammer{
+    background-color:rgb(82, 82, 82) ;
+}
+.legalspaceprogrammer{
+    background-color: rgba(248, 248, 138, 0.886);
+}
+
+.player1colorprogrammer{
+    background-image:linear-gradient(#4EC9B0,#4EC9B0);
+}
+.player2colorprogrammer{
+    background-image: linear-gradient(#9CDCFE,#9CDCFE);
+}
+.player1Bprogrammer{
+    background-color: #8fd4c6;
+}
+.player2Bprogrammer{
+    background-color: #caedff;
+}
+.player1shadowprogrammer{
+    background-image: linear-gradient(
+        315deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5),
+        rgb(55, 55, 55,.5),
+        rgba(135, 135, 135, 0.5) 
+    );
+}
+.player2shadowprogrammer{
+    background-image: linear-gradient(
+        315deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5),
+        rgb(55, 55, 55,.5),
+        rgba(135, 135, 135, 0.5) 
+    );
+}
+.selectedcolorprogrammer{
+    background-color:rgba(116, 116, 116, 0.886) ;
+}
+.pickwindowbackprogrammer{
+    background-color: white;
+}
+
+.saveiconBcolorprogrammer{
+    background-color:#DCDCAA;
+}
+.saveprogrammer:hover .saveicon{
+    background-color: #D7BA7D;
+}
+.undoprogrammer:hover .undoicon{
+    background-color: #D7BA7D;
+}
+.returntostartprogrammer:hover .returnicon{
+    background-color: #D7BA7D;
+}
+.buttontextprogrammer{
+    color:#D7BA7D;
+}
+
+.showlogbuttonprogrammer:hover .showloghouse{
+    background-color: #D7BA7D;
+}
+.movementloggradientprogrammer{
+    background-image:linear-gradient(rgb(73, 73, 73),rgb(56, 56, 56),rgb(40, 40, 40),rgb(26, 26, 26)) ;
+}
+.borderprogrammer{
+    border-top:1px solid rgb(32, 29, 58,.3);
+}

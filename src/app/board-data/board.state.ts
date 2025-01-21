@@ -86,10 +86,15 @@ export interface databank{
     id:string;
     player1:string;
     player2:string;
+    p1uid:string;
+    p2uid:string;
     turnplayer:string;
     incheck:boolean;
     board:BoardLayout;
-    log:Array<movementLog>
+    log:Array<movementLog>;
+    over:boolean;
+    winner:string;
+    loser:string;
 }
 
 export interface movementLog{
@@ -115,7 +120,32 @@ export interface legalmoves{
 }
 
 export interface testuser{
-    username:string;
+    name:string;
     theme:string;
     army:string;
+    points:number;
+    language:string;
+    uid:string;
+}
+
+export interface langdic{
+    [lang:string]:wordlist;
+}
+export interface wordlist{
+    [page:string]:Array<string>;
+}
+
+export interface opengame{
+    opp:string,
+    yourturn:boolean,
+    oppuid:string,
+    over:boolean,
+    winner:string
+}
+
+export interface endgame{
+    winner:string,
+    loser:string,
+    points1:number,
+    points2:number
 }

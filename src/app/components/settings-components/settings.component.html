@@ -1,0 +1,71 @@
+<div [ngClass]="['settingspage',('bodycolor'+selectedstyle())]">
+
+
+    <div [ngClass]="['settingshouse',('secondbodytextcolor'+selectedstyle())]">
+
+        <div [ngClass]="['settingsitem','themeitem',('secondmainborder'+selectedstyle())]">
+            <div class="themetitle"><p class="centertext">{{worddic()[0]}}</p></div>
+            <div [ngClass]="[('bodycolor'+selectedstyle()),'themedrop',('secondmainborder'+selectedstyle())]" (click)="themetog=='closed'?themetog='open':themetog='closed'">
+                <div class="topoption"><p class="centertext">{{theme}}</p></div>
+                <div [ngClass]="[themetog, 'optionhouse',('mainbackgroundcolor'+selectedstyle())]" [@showop]="{value: themetog}">
+                    <div [ngClass]="['themeoption',('maintextcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="changetheme('simple')"><p class="centertext">{{worddic()[1]}}</p></div>
+                    <div [ngClass]="['themeoption',('maintextcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="changetheme('park')"><p class="centertext">{{worddic()[2]}}</p></div>
+                    <div [ngClass]="['themeoption',('maintextcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="changetheme('programmer')"><p class="centertext">{{worddic()[3]}}</p></div>
+                </div>
+            </div>
+            <div class="themeexample">
+                <div [ngClass]="[('bodycolor'+theme), 'minisite']">
+                    <div [ngClass]="[('mainbackgroundcolor'+theme),('maintextcolor'+theme), 'mininav']">
+                        <div class="left">
+                            <div class="mininavitem"><p class="mininavtext">Home</p></div>
+                            <div class="mininavitem"><p class="mininavtext">Open Games</p></div>
+                        </div>
+                        <div [ngClass]="['middle']">
+                            <div [ngClass]="[('bodycolor'+theme),'logo']"></div>
+                        </div>
+                        <div class="right">
+                            <div class="mininavitem"><p class="mininavtext">Logout</p></div>
+                        </div>
+                    </div>
+                    <div class="minibody">
+                        <div [ngClass]="[('maintile'+theme),('bodycolor'+theme),'maintile']">
+                        </div>
+                    
+                        <div [ngClass]="[('maintile'+theme),('bodycolor'+theme),'maintile']">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div [ngClass]="[('bodycolor'+selectedstyle()),'settingsitem','themeitem',('secondmainborder'+selectedstyle())]">
+            <div class="themetitle"><p class="centertext">{{worddic()[4]}}</p></div>
+            <div [ngClass]="[('bodycolor'+selectedstyle()),'themedrop',('secondmainborder'+selectedstyle())]" (click)="armytog=='closed'?armytog='open':armytog='closed'">
+                <div class="topoption"><p class="centertext">{{army}}</p></div>
+                <div [ngClass]="[armytog, 'optionhouse',('mainbackgroundcolor'+selectedstyle())]" [@showop]="{value: armytog}">
+                    <div [ngClass]="['themeoption',('maintextcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="army='classical'"><p class="centertext">{{worddic()[5]}}</p></div>
+                    <div [ngClass]="['themeoption',('maintextcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="army='japanese'"><p class="centertext">{{worddic()[6]}}</p></div>
+                </div>
+            </div>
+
+            <div class="armygrid">
+                <div [ngClass]="[('whitespace'+theme),'space']"><div [ngClass]="[('player1color'+theme),('player1P'+theme+army),'peice',('Pclip'+army)]"></div><div [ngClass]="[('player1B'+theme),('player1BP'+theme+army),('Pbackground'+army),'background']"></div><div [ngClass]="[('player1shadow'+theme),('player1SP'+theme+army),('Pshadow'+army),'shadow']"></div></div>
+                <div [ngClass]="[('blackspace'+theme),'space']"><div [ngClass]="[('player2color'+theme),('player2C'+theme+army),'peice',('Cclip'+army)]"></div><div [ngClass]="[('player2B'+theme),('player2BC'+theme+army),('Cbackground'+army),'background']"></div><div [ngClass]="[('player1shadow'+theme),('player2SC'+theme+army),('Cshadow'+army),'shadow']"></div></div>
+                <div [ngClass]="[('blackspace'+theme),'space']"><div [ngClass]="[('player1color'+theme),('player1H'+theme+army),'peice',('Hclip'+army)]"></div><div [ngClass]="[('player1B'+theme),('player1BH'+theme+army),('Hbackground'+army),'background']"></div><div [ngClass]="[('player1shadow'+theme),('player1SH'+theme+army),('Hshadow'+army),'shadow']"></div></div>
+                <div [ngClass]="[('whitespace'+theme),'space']"><div [ngClass]="[('player2color'+theme),('player2B'+theme+army),'peice',('Bclip'+army)]"></div><div [ngClass]="[('player2B'+theme),('player2BB'+theme+army),('Bbackground'+army),'background']"></div><div [ngClass]="[('player1shadow'+theme),('player2SB'+theme+army),('Bshadow'+army),'shadow']"></div></div>
+                <div [ngClass]="[('whitespace'+theme),'space']"><div [ngClass]="[('player1color'+theme),('player1K'+theme+army),'peice',('Kclip'+army)]"></div><div [ngClass]="[('player1B'+theme),('player1BK'+theme+army),('Kbackground'+army),'background']"></div><div [ngClass]="[('player1shadow'+theme),('player1SK'+theme+army),('Kshadow'+army),'shadow']"></div></div>
+                <div [ngClass]="[('blackspace'+theme),'space']"><div [ngClass]="[('player2color'+theme),('player2Q'+theme+army),'peice',('Qclip'+army)]"></div><div [ngClass]="[('player2B'+theme),('player2BQ'+theme+army),('Qbackground'+army),'background']"></div><div [ngClass]="[('player1shadow'+theme),('player2SQ'+theme+army),('Qshadow'+army),'shadow']"></div></div>
+            </div>
+        </div>
+
+        <div [ngClass]="[('bodycolor'+selectedstyle()),'settingsitem','themeitem',('secondmainborder'+selectedstyle())]">
+            <div></div>
+            <div (click)="savetheme()" [ngClass]="[('maintextcolor'+selectedstyle()),('hovertobodytext'+selectedstyle()),('hovertobody'+selectedstyle()),('mainbackgroundcolor'+selectedstyle()),'themedrop',('secondmainborder'+selectedstyle())]">
+                <div class="topoption"><p [ngClass]="['centertext','transitioncolor']">{{worddic()[7]}}</p></div>
+            </div>
+            <div></div>            
+        </div>
+
+    </div>
+
+</div>

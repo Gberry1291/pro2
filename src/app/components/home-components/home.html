@@ -1,19 +1,55 @@
-<div class="page">
+<div [ngClass]="['page',('bodycolor'+selectedstyle())]" class="page" (click)="resetsugg()">
+    
+    <div [ngClass]="['maintile','mainL',('maintile'+selectedstyle()),('bodycolor'+selectedstyle())]">
+        @if(this.user()){
+            <div [ngClass]="['titlediv',('secondbodytextcolor'+selectedstyle())]" ><p class="titletext">{{worddic()[0]}}</p></div>
+            <div [ngClass]="['inputdiv',('bodycolor'+selectedstyle()),('maintextcolor'+selectedstyle())]" >
+                <input [ngClass]="['pvpitem',('mainbackgroundcolor'+selectedstyle()),('maintextcolor'+selectedstyle())]" (input)="fillsuggestions()" [formControl]="oppemail" type="email" placeholder="{{worddic()[1]}}">
+                <div [ngClass]="['magglass',('mainbackgroundcolor'+selectedstyle())]">
+                    <div class="magclip"></div>
+                </div>
+            </div>
+            <div [ngClass]="['suggestionslide',('mainbackgroundcolor'+selectedstyle()),('maintextcolor'+selectedstyle())]" [@showsug]="{value: slidestatus()}">
+                <div [ngClass]="['sugg',('suggborder'+selectedstyle()),('sugg'+selectedstyle())]" (click)="fillinput(suggestion1())">
+                    <p class="titletext">{{suggestion1()[0]}}</p>
+                </div>
+                <div [ngClass]="['sugg',('sugg'+selectedstyle())]" (click)="fillinput(suggestion2())">
+                    <p class="titletext">{{suggestion2()[0]}}</p>
+                </div>
+                <div [ngClass]="['sugg',('sugg'+selectedstyle())]" (click)="fillinput(suggestion3())">
+                    <p class="titletext">{{suggestion3()[0]}}</p>
+                </div>
+                <div [ngClass]="['sugg',('sugg'+selectedstyle())]" (click)="fillinput(suggestion4())">
+                    <p class="titletext">{{suggestion4()[0]}}</p>
+                </div>
+            </div>
+            <button [ngClass]="['button',('mainbackgroundcolor'+selectedstyle()),('maintextcolor'+selectedstyle()),buttonclass()]" (click)="sendchallenge()">
+                <div class="buttontext"><p class="titletext">{{worddic()[3]}}</p></div>
+                <div [ngClass]="['challengesword',('mainbackgroundcolor'+selectedstyle())]" >
+                    <div class="challengeswordclip"></div>
+                </div>
+            </button>
+        }@else{
+            <div [ngClass]="['titlediv',('secondbodytextcolor'+selectedstyle())]">
+                <p class="titletext">
+                    {{worddic()[4]}}
+                </p>
+            </div>
+        }
+    </div>
 
-    <div class="maintile pvptile">
-        <p class="pvpitem">New PvP game</p>
-        <input class="pvpitem" (input)="fillsuggestions()" [formControl]="oppemail" type="email" placeholder="Opp email">
-        <div class="suggestionslide" [@showsug]="{value: showsug}">
-            <p (click)="fillinput(suggestion1)">{{suggestion1}}</p>
-            <p (click)="fillinput(suggestion2)">{{suggestion2}}</p>
-            <p (click)="fillinput(suggestion3)">{{suggestion3}}</p>
-            <p (click)="fillinput(suggestion4)">{{suggestion4}}</p>
+    <a routerLink="/AI" [ngClass]="['maintile','mainR','grido',('maintile'+selectedstyle()),('bodycolor'+selectedstyle())]" (mouseleave)="chill()" (mouseover)="mad()">
+        <div class="clipart glove1" [@growhand]="{value: movehand}"></div>
+        <div class="clipart glove2" [@growhand]="{value: movehand}"></div>
+        <div class="clipart glove3" [@growhand]="{value: movehand}"></div>
+        <div class="clipart glove4" [@growhand]="{value: movehand}"></div>
+        <div class="clipart2 giant1" ></div>
+        <div class="clipart2 giant2" ></div>
+        <div class="clipart2 giant3" [@gloweyes]="{value: movehand}"></div>
+        <div class="clipart2 giant4" [@makeangry]="{value: movehand}"></div>
+        <div class="vsai">
+            <p [ngClass]="['titletext',('secondbodytextcolor'+selectedstyle())]">{{worddic()[2]}}</p>
         </div>
-        <button class="pvpitem" (click)="sendchallenge()" [ngClass]="[buttonclass]" >Send Challenge!</button>
-    </div>
-
-    <div class="maintile">
-        <p class="pvpitem">New Game vs Ai</p>
-    </div>
+    </a>
 
 </div>

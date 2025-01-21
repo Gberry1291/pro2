@@ -1,22 +1,28 @@
-<div class="movelog" [@showlog]="animateslide()">
-    <div class="logitem" *ngFor="let logitem of log()">
+<div [ngClass]="['movelog',('movementloggradient'+selectedstyle())]" [@showlog]="animateslide()">
+    <div [ngClass]="['logitem',('border'+selectedstyle())]" *ngFor="let logitem of log()">
         <div class="logspacestart">
-            <div [ngClass]="outPutColor(logitem.start)">
-                <div [ngClass]="[logitem.startpeice,logitem.startplayer]"></div>
-                <div [ngClass]="[(logitem.startpeice+'background'),(logitem.startplayer+'background')]"></div>
+            <div [ngClass]="['logpeicestart',(outPutColor(logitem.start)+selectedstyle())]">
+                <div [ngClass]="['logpeicestart',(logitem.startpeice+'clip'+selectedarmy()),(logitem.startplayer+'color'+selectedstyle()),((logitem.startplayer+logitem.startpeice+selectedstyle()+selectedarmy()))]"></div>
+                <div [ngClass]="['logbackstart',(logitem.startpeice+'background'+selectedarmy()),(logitem.startplayer+'B'+selectedstyle()),((logitem.startplayer+'B'+logitem.startpeice+selectedstyle()+selectedarmy()))]"></div>
+                <div [ngClass]="['logshadowstart',(logitem.startpeice+'shadow'+selectedarmy()),(logitem.startplayer+'shadow'+selectedstyle()),((logitem.startplayer+'S'+logitem.startpeice+selectedstyle()+selectedarmy()))]"></div>
             </div>
         </div>
         <div class="logtext">
             <p class="logtext">{{convertLocation(logitem.start)}}</p>
         </div>
-        <div *ngIf="logitem.endpeice==''; then thenBlock else elseBlock"></div>
-        <ng-template #thenBlock><div class="arrow"></div></ng-template>
-        <ng-template #elseBlock><div class="sword"></div></ng-template>
+        <div *ngIf="logitem.special==true; then specialblock else elseBlock"></div>
+        <ng-template #specialblock><div [ngClass]="['special',('secondbackgroundcolor'+selectedstyle())]"></div></ng-template>
+        <ng-template #elseBlock>
+            <div *ngIf="logitem.endpeice==''; then arrowblock else swordblock"></div>
+                <ng-template #arrowblock><div [ngClass]="['arrow',('secondbackgroundcolor'+selectedstyle())]"></div></ng-template>
+                <ng-template #swordblock><div [ngClass]="['sword',('secondbackgroundcolor'+selectedstyle())]"></div></ng-template>
+        </ng-template>
 
         <div class="logspaceend">
-            <div [ngClass]="outPutColor(logitem.end)">
-                <div [ngClass]="[logitem.endpeice,logitem.endplayer]"></div>
-                <div [ngClass]="[(logitem.endpeice+'background'),(logitem.endplayer+'background')]"></div>
+            <div [ngClass]="['logpeicestart',(outPutColor(logitem.start)+selectedstyle())]">
+                <div [ngClass]="['logpeicestart',(logitem.endpeice+'clip'+selectedarmy()),(logitem.endplayer+'color'+selectedstyle()),((logitem.endplayer+logitem.endpeice+selectedstyle()+selectedarmy()))]"></div>
+                <div [ngClass]="['logbackstart',(logitem.endpeice+'background'+selectedarmy()),(logitem.endplayer+'B'+selectedstyle()),((logitem.endplayer+'B'+logitem.endpeice+selectedstyle()+selectedarmy()))]"></div>           
+                <div [ngClass]="['logshadowstart',(logitem.endpeice+'shadow'+selectedarmy()),(logitem.endplayer+'shadow'+selectedstyle()),((logitem.endplayer+'S'+logitem.endpeice+selectedstyle()+selectedarmy()))]"></div>   
             </div>
         </div>
         <div class="logtext">

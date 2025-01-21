@@ -152,9 +152,6 @@ export class FindLegal {
         let row:string=thisguy.index[1]
         let column:string=thisguy.index[0]
         if (turnplayer=="player1") {
-            if (column=="2") {
-                options.push(this.zip(column,row,2,0,["player0"]))
-            }
             if (column=="5") {
                 this.enpassencheck(column,row,0,1,1,turnplayer,opponent)
                 this.enpassencheck(column,row,0,-1,1,turnplayer,opponent)
@@ -162,28 +159,37 @@ export class FindLegal {
             let legalplayers=[opponent]
             if (showprotected) {
                 legalplayers.push(turnplayer)
+                legalplayers.push("player0")
             }else{
-                options.push(this.zip(column,row,1,0,["player0"]))  
+                let basic=this.zip(column,row,1,0,["player0"])
+                options.push(basic)
+                if (column=="2" && basic) {
+                    options.push(this.zip(column,row,2,0,["player0"]))
+                }  
             }
-            options.push(this.zip(column,row,1,1,[opponent]))
-            options.push(this.zip(column,row,1,-1,[opponent]))
+            options.push(this.zip(column,row,1,1,legalplayers))
+            options.push(this.zip(column,row,1,-1,legalplayers))
         }
         if (turnplayer=="player2") {
-            if (column=="7") {
-                options.push(this.zip(column,row,-2,0,["player0"]))
-            }
-            if (column=="4") {
-                this.enpassencheck(column,row,0,1,-1,turnplayer,opponent)
-                this.enpassencheck(column,row,0,-1,-1,turnplayer,opponent)          
-            }
-            let legalplayers=[opponent]
-            if (showprotected) {
-                legalplayers.push(turnplayer)
-            }else{
-                options.push(this.zip(column,row,-1,0,["player0"]))
-            }
-            options.push(this.zip(column,row,-1,1,[opponent]))
-            options.push(this.zip(column,row,-1,-1,[opponent]))  
+
+                if (column=="4") {
+                    this.enpassencheck(column,row,0,1,-1,turnplayer,opponent)
+                    this.enpassencheck(column,row,0,-1,-1,turnplayer,opponent)          
+                }
+                let legalplayers=[opponent]
+                if (showprotected) {
+                    legalplayers.push(turnplayer)
+                    legalplayers.push("player0")
+                }else{
+                    let basic=this.zip(column,row,-1,0,["player0"])
+                    options.push(basic)
+                    if (column=="7" && basic) {
+                        options.push(this.zip(column,row,-2,0,["player0"]))
+                    }
+                }
+
+            options.push(this.zip(column,row,-1,1,legalplayers))
+            options.push(this.zip(column,row,-1,-1,legalplayers))  
         }
 
         options.forEach(element => {
@@ -379,23 +385,61 @@ export class FindLegal {
 
         }
     }
-    GameOverCheck(GameOverFor:string,opponent:string){
+    // GameOverCheck(GameOverFor:string,opponent:string){
+    //     for (let [key, value] of Object.entries(this.boardservice.board().board)) {
+    //         if (value.player==GameOverFor) {
+    //             this.moveManager(
+    //                 {peice:value,index:key},
+    //                 GameOverFor,
+    //                 opponent,
+    //                 false,
+    //                 true
+    //             )
+                
+    //             if (this.legals.legalmoves.length>0) {
+    //                 return true
+    //             }
+    //         }
+    //     }
+    //     return false
+    // }
+    // DrawCheck(GameOverFor:string,opponent:string){
+    //     for (let [key, value] of Object.entries(this.boardservice.board().board)) {
+    //         if (value.player==GameOverFor) {
+    //             this.moveManager(
+    //                 {peice:value,index:key},
+    //                 GameOverFor,
+    //                 opponent,
+    //                 false,
+    //                 false
+    //             )
+                
+    //             if (this.legals.legalmoves.length>0) {
+    //                 return false
+    //             }
+    //         }
+    //     }
+    //     return true
+    // }
+    GameOverCheck(GameOverFor:string,opponent:string,incheck:boolean){
         for (let [key, value] of Object.entries(this.boardservice.board().board)) {
             if (value.player==GameOverFor) {
+                // value.player="selected"
+                this.pinnedPeices(GameOverFor,opponent)
+                // value.player=GameOverFor
                 this.moveManager(
                     {peice:value,index:key},
                     GameOverFor,
                     opponent,
                     false,
-                    true
+                    incheck
                 )
-                
                 if (this.legals.legalmoves.length>0) {
-                    return true
+                    return false
                 }
             }
         }
-        return false
+        return true
     }
     checkifpinned(thisguy:Location){
         this.pinnedpeices.forEach(element => {

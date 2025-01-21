@@ -1,21 +1,25 @@
-<div class="logbody">
+<div [ngClass]="['logbody','bodycolor'+selectedstyle()]" >
     <div class="logoptions">
 
-        <h1 class="signinH">Sign In</h1>
+        <h1 class="signinH">{{worddic()[0]}}</h1>
 
-        <button class="googlebutton" (click)="signInWithGoogle()">
+        <button [ngClass]="['googlebutton',('maintile'+selectedstyle()),('bodycolor'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomain'+selectedstyle()),('hovertomaintext'+selectedstyle())]" (click)="signInWithGoogle()">
             <img class="googleimg" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
-            <p class="googletext">Continue with Google</p>
+            <p class="googletext">{{worddic()[1]}}</p>
         </button>
 
-        <h2 class="signinor">Or</h2>
+        <h2 class="signinor">{{worddic()[2]}}</h2>
         
-        <div class="createnew">
-            <p class="createnewtext">Create/login with us</p>
-            <input class="inputsign item2" [formControl]="email" type="email" placeholder="email">
-            <input class="inputsign item3"  [formControl]="password" type="text" placeholder="password">
-            <button class="inputbutton item4"  (click)="login()"><p class="buttontext">Login</p></button>
-            <button class="inputbutton item5"  (click)="signup()"><p class="buttontext">Create Account</p></button>
+        <div [ngClass]="['createnew',('maintile'+selectedstyle()),('bodycolor'+selectedstyle()),('secondbodytextcolor'+selectedstyle())]">
+            <p class="createnewtext">{{worddic()[3]}}</p>
+            <input [ngClass]="['inputsign','item2',('maintile'+selectedstyle()),('bodycolor'+selectedstyle())]" [formControl]="email" type="email" placeholder="email">
+            <input [ngClass]="['inputsign','item3',('maintile'+selectedstyle()),('bodycolor'+selectedstyle())]"  [formControl]="password" type="text" placeholder="password">
+            <button [ngClass]="['inputbutton','item4',('maintile'+selectedstyle()),('mainbackgroundcolor'+selectedstyle()),('maintextcolor'+selectedstyle()),('hovertobody'+selectedstyle())]" (click)="login()">
+                <p [ngClass]="['buttontext',('buttontext'+selectedstyle())]">{{worddic()[4]}}</p>
+            </button>
+            <button [ngClass]="['inputbutton','item5',('maintile'+selectedstyle()),('mainbackgroundcolor'+selectedstyle()),('maintextcolor'+selectedstyle()),('hovertobody'+selectedstyle())]" (click)="signup()">
+                <p [ngClass]="['buttontext',('buttontext'+selectedstyle())]">{{worddic()[5]}}</p>
+            </button>
         </div>
 
 

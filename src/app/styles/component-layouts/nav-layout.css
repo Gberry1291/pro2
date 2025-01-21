@@ -2,14 +2,12 @@ body{
     margin: 0%;
     background-image: var(--bodygradient);
     background-color: var(--bodycolor);
-    box-sizing: border-box;
 }
+
 #nav{
     position:absolute;
     margin:0px;
     width:100%;
-    background-image: var(--navbackground);
-    background-color: var(--navbackgroundColor);
     height:10%;
 }
 .flex{
@@ -17,44 +15,72 @@ body{
 }
 .left{
     width:40%;
+    display: flex;
+    justify-content: space-between;
 }
 .middle{
     width:20%;
-    background-image: var(--navbackground);
-    background-color:var(--navbackgroundColor);
     display: flex;
 }
 .right{
     width:40%;
-    justify-content: end;
+    justify-content: space-between;
+    display: flex;
 }
 .navitem{
+    box-sizing: border-box;
     display:flex;
     text-decoration: none;
     position: relative;
     top:5%;
     height: 90%;
-    margin-left: 5%;
-    margin-right:5%;
     padding-left:2%;
     padding-right:2%;
-    color:var(--navitemcolor);
-    background-image: var(--navitembackground);
     text-align: center;
-    transition:border .1s,background-color .5s;
-    clip-path: var(--navitemclip);
+    transition:background-color .5s;
 }
 .navtext{
     position: relative;
     margin:auto;
     font-size: .7rem;
 }
-.navitem:hover{
-    background-color:var(--naveitemhovercolor);
+.languageitem{
+    box-sizing: border-box;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    top:5%;
+    height: 90%;
+    padding-left:2%;
+    padding-right:2%;
+    text-align: center;
+    transition:background-color .5s;
+}
+.languagetext{
+    font-size: 1.2vh;
 }
 .logo{
     height:80%;
     aspect-ratio: 1/1;
     margin:auto;
-    background-color: white;
+    clip-path: var(--logoclip);
+    transition:background-color 2s;
+}
+
+.languageslide{
+    position: absolute;
+    top:100%;
+    left:60%;
+    width:40%;
+    height:0vh;
+    z-index: 10;
+    overflow: hidden;
+}
+.languageoption{
+    position: relative;
+    display: flex;
+    width:100%;
+    font-weight: bolder;
+    height:10vh;
+    transition:background-color .5s;
 }

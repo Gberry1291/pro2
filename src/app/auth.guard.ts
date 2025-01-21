@@ -19,25 +19,11 @@ export class AuthGuard implements CanActivate {
         const currentRoute = this.router.routerState.snapshot.url;
         const currentRouteIsLogin = currentRoute === '/login';
 
-        // return this.user$.pipe(
-        //     map((user) => {
-        //         if (user) {
-        //             return true;
-        //         } else if (user && currentRouteIsLogin) {
-        //             this.router.navigate(['/']);
-        //             return false
-        //         } else {
-        //             this.router.navigate(['/login']);
-        //             return false;
-        //         }
-        //     })
-        // );
-
         return this.user$.pipe(
-            map(() => {
-                if (this.authService.testuser().username) {
+            map((user) => {
+                if (user) {
                     return true;
-                } else if (this.authService.testuser().username && currentRouteIsLogin) {
+                } else if (user && currentRouteIsLogin) {
                     this.router.navigate(['/']);
                     return false
                 } else {
@@ -46,6 +32,20 @@ export class AuthGuard implements CanActivate {
                 }
             })
         );
+
+        // return this.user$.pipe(
+        //     map(() => {
+        //         if (this.authService.testuser().email) {
+        //             return true;
+        //         } else if (this.authService.testuser().email && currentRouteIsLogin) {
+        //             this.router.navigate(['/']);
+        //             return false
+        //         } else {
+        //             this.router.navigate(['/login']);
+        //             return false;
+        //         }
+        //     })
+        // );
 
         
     }

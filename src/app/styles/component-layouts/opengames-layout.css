@@ -1,0 +1,42 @@
+.openpage{
+    position: absolute;
+    top:10%;
+    height:90%;
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.opengame{
+    text-decoration: none;
+    margin-left:15%;
+    width:27%;
+    margin-top: calc(90vh / 10);
+    height:20%;
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+    border-radius: 10px;
+    transition:background-color .5s;
+    box-sizing: border-box;
+}
+.wordhouse{
+    width:100%;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.buttontext{
+    text-decoration: none;
+    margin:auto;
+    font-weight: bold;
+    line-break: anywhere;
+    transition:color .5s;
+    box-sizing: border-box;
+}
+.alert{
+    color:rgb(189, 36, 36);
+}
+.alertborder{
+    border:2px solid rgb(189, 36, 36);
+}

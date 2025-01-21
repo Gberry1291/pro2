@@ -1,26 +1,26 @@
-<div class="showlogbutton" (click)="onClick('toglog')" [@showlog]="animateslide()">
-    <div class="showloghouse">
-        <div class="showlogbuttonicon"></div>
+<div [ngClass]="['showlogbutton',('showlogbutton'+selectedstyle())]" (click)="onClick('toglog')" [@showlog]="animateslide()">
+    <div [ngClass]="['showloghouse',('secondbackgroundcolor'+selectedstyle())]">
+        <div [ngClass]="['showlogbuttonicon',('bodycolor'+selectedstyle())]"></div>
     </div>
 </div>
-<div *ngIf="undobutton()" (click)="onClick('undolast')" class="undo">
+<div *ngIf="undobutton()" (click)="onClick('undolast')" [ngClass]="['undo',('undo'+selectedstyle()),('mainbackgroundcolor'+selectedstyle())]">
     <div class="b1"></div>
     <div class="b2"></div>
     <div class="b3"></div>
-    <div class="icon undoicon"></div>
-    <p class="buttontext">Undo</p>
+    <div [ngClass]="['icon','undoicon',('saveiconBcolor'+selectedstyle())]"></div>
+    <p [ngClass]="['buttontext',('buttontext'+selectedstyle())]">{{worddic()[0]}}</p>
 </div>
-<div *ngIf="savebutton()" class="save">
+<div *ngIf="savebutton()" (click)="onClick('save')" [ngClass]="['save',('save'+selectedstyle()),('mainbackgroundcolor'+selectedstyle())]">
     <div class="b1"></div>
     <div class="b2"></div>
     <div class="b3"></div>
-    <div class="icon saveicon"></div>
-    <p class="buttontext">Save</p>
+    <div [ngClass]="['icon','saveicon',('saveiconBcolor'+selectedstyle())]"></div>
+    <p [ngClass]="['buttontext',('buttontext'+selectedstyle())]">{{worddic()[1]}}</p>
 </div>
-<div *ngIf="returntostartbutton()" (click)="onClick('undoTofirst')" class="returntostart">
+<div *ngIf="returntostartbutton()" (click)="onClick('undoTofirst')" [ngClass]="['returntostart',('save'+selectedstyle()),('mainbackgroundcolor'+selectedstyle())]">
     <div class="b1"></div>
     <div class="b2"></div>
     <div class="b3"></div>
-    <div class="icon returnicon"></div>
-    <p class="buttontext">Return to start</p>
+    <div [ngClass]="['icon','returnicon',('saveiconBcolor'+selectedstyle())]"></div>
+    <p [ngClass]="['buttontext',('buttontext'+selectedstyle())]">{{worddic()[2]}}</p>
 </div>

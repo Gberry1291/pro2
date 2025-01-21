@@ -5,27 +5,25 @@
     display: block;
 }
 
+.page{
+    position: absolute;
+    top:10%;
+    height:90%;
+    width:100%;
+}
 
 .save{
     border-radius: 5px;
 }
-.save:hover .saveicon{
-    background-color: var(--savehovercolor);
-}
 .saveicon{
     clip-path:var(--saveclip);
-    background-color: var(--saveiconBcolor);
     transition:background-color 1s;
 }
 .undo{
     border-radius: 5px;
 }
-.undo:hover .undoicon{
-    background-color: var(--savehovercolor);
-}
 .undoicon{
     clip-path:var(--undoclip);
-    background-color: var(--saveiconBcolor);
     transition:background-color 1s;
 }
 .returntostart{
@@ -33,11 +31,7 @@
 }
 .returnicon{
     clip-path:var(--undoclip);
-    background-color: var(--saveiconBcolor);
     transition:background-color 1s;
-}
-.returntostart:hover .returnicon{
-    background-color: var(--savehovercolor);
 }
 
 
@@ -45,31 +39,24 @@
     z-index: 20;
     display: flex;
 }
-.showlogbutton:hover .showloghouse{
-    background-color: var(--showloghover);
-}
 .showloghouse{
     margin: auto;
     position: relative;
-    width:98%;
     aspect-ratio: 1/1;
-    background-color: var(--showloghouse);
     border-radius: 50px;
     transition:background-color 1s;
 }
 .showlogbuttonicon{
     clip-path: var(--showlogiconclip);
-    background-color: var(--showlogbuttonicon);
     height: 100%;
     width:100%;
 }
 .movelog{
     position: absolute;
-    top:12%;
+    top:10%;
     left:-1%;
     width:0%;
-    height:88%;
-    background-image: var(--movementlogB);
+    height:90%;
     overflow-y: scroll;
     display: block;
     z-index: 10;
@@ -83,6 +70,9 @@
     display: grid;
     grid-template-rows: repeat(8,12.5%);
     grid-template-columns: repeat(8,12.5%);
+}
+.buttonhouse{
+    line-break: anywhere;
 }
 @media only screen and (orientation: landscape) {
     .board{
@@ -102,6 +92,11 @@
         width:50%;
         aspect-ratio: 2/3;
         max-width: 100px;
+        max-height:31%;
+    }
+    .showloghouse{
+        height:98%;
+        aspect-ratio: 1/1;
     }
     .save{
         display: flex;
@@ -110,10 +105,10 @@
         left:1%;
         width:95%;
         max-width:200px;
+        max-height:31%;
         aspect-ratio: 2/1;
         border-radius:10px;
         box-shadow: 5px 5px 10px black;
-        background-color: var(--buttoncolor);
     }
     .undo{
         display: flex;
@@ -122,11 +117,11 @@
         left:1%;
         width:95%;
         max-width: 200px;
+        max-height:31%;
         aspect-ratio: 2/1;
         text-align: center;
         border-radius:10px;
         box-shadow: 5px 5px 10px black;
-        background-color: var(--buttoncolor);
     }
     .returntostart{
         display: flex;
@@ -138,7 +133,6 @@
         aspect-ratio: 2/1;
         border-radius:10px;
         box-shadow: 5px 5px 10px black;
-        background-color: var(--buttoncolor);
     }
     .b1{
         position: absolute;
@@ -146,8 +140,6 @@
         top:0%;
         height:100%;
         width:100%;
-        clip-path:var(--b1clip);
-        background-color: black;
     }
     .b2{
         position: absolute;
@@ -155,8 +147,6 @@
         top:0%;
         height:100%;
         width:100%;
-        background-color: var(--b2color);
-        clip-path:var(--b2clip);
     }
     .b3{
         position: absolute;
@@ -164,8 +154,6 @@
         top:0%;
         height:100%;
         width:100%;
-        background-color: var(--b2color);
-        clip-path: var(--b3clip);
     }
     .icon{
         position: relative;
@@ -178,10 +166,13 @@
         position: relative;
         margin:auto;
         font-size: 2vw;
-        background-color: var(--buttontextB);
     }
   }
 @media only screen and (orientation: portrait) {
+    .showloghouse{
+        width:98%;
+        aspect-ratio: 1/1;
+    }
     @media (min-aspect-ratio:4/5){
         .board{
             width:90%;
@@ -206,7 +197,6 @@
             width:95%;
             height:27%;
             text-align: center;
-            background-color: var(--middlebuttonB);
             border-radius:10px;
             box-shadow: 5px 5px 10px black;
         }
@@ -217,7 +207,6 @@
             width:95%;
             height:26%;
             text-align: center;
-            background-color: var(--middlebuttonB);
             border-radius:10px;
             box-shadow: 5px 5px 10px black;
         }
@@ -228,7 +217,6 @@
             width:95%;
             height:27%;
             text-align: center;
-            background-color: var(--middlebuttonB);
             border-radius:10px;
             box-shadow: 5px 5px 10px black;
         }
@@ -275,7 +263,6 @@
             display: flex;
             border-radius:10px;
             box-shadow: 5px 5px 10px black;
-            background-color: var(--buttoncolor);
         }
         .undo{
             position: relative;
@@ -286,7 +273,6 @@
             display: flex;
             border-radius:10px;
             box-shadow: 5px 5px 10px black;
-            background-color: var(--buttoncolor);
         }
         .returntostart{
             position: relative;
@@ -297,7 +283,6 @@
             display: flex;
             border-radius:10px;
             box-shadow: 5px 5px 10px black;
-            background-color: var(--buttoncolor);
         }
         .b1{
             position: absolute;
@@ -305,8 +290,6 @@
             top:0%;
             height:100%;
             width:100%;
-            clip-path:var(--b1clip);
-            background-color: var(--b1color);
         }
         .b2{
             position: absolute;
@@ -314,8 +297,6 @@
             top:0%;
             height:100%;
             width:100%;
-            clip-path:var(--b2clip);
-            background-color: var(--b2color);
         }
         .b3{
             position: absolute;
@@ -323,8 +304,6 @@
             top:0%;
             height:100%;
             width:100%;
-            clip-path:var(--b3clip);
-            background-color: var(--b3color);
         }
         .icon{
             position: relative;
@@ -337,7 +316,6 @@
             position: relative;
             margin:auto;
             font-size: 4vw;
-            background-color: var(--buttontextB);
             border-radius: 5px;
         }
 
@@ -349,18 +327,14 @@
     border:1px solid black;
     width: 100%;
     height: 100%;
-    background-color: var(--whitespacecolor);
 }
 .blackspace{
     border:1px solid black;
-    color:white;
     width: 100%;
     height: 100%;
-    background-color: var(--blackspacecolor);
 }
 .legalspace{
     border:1px solid black;
-    background-color: var(--legalspacecolor);
     width: 100%;
     height: 100%;
 }
@@ -371,23 +345,21 @@
     margin-left:2%;
     aspect-ratio: 1/1;
     z-index: 2;
-    clip-path: var(--Qclip)
 }
 .Qbackground{
+    position: relative;
     aspect-ratio: 1/1; 
     margin-top: -95%; 
     width:95%;
     margin-left:2%;
     z-index: 1;
-    clip-path:var(--Qbackground);
 }
 .Qshadow{
+    position: relative;
     aspect-ratio: 1/1; 
     margin-top: -96%; 
     width:95%;
     margin-left:2%;
-    background-image: var(--peiceshadowcolor);
-    clip-path:var(--Qshadow)
 }
 .C{
     position: relative;
@@ -396,23 +368,21 @@
     width:100%;
     aspect-ratio: 1/1; 
     z-index: 2;
-    clip-path: var(--Cclip);
 }
 .Cbackground{
+    position: relative;
     margin-left: 0%;
     margin-top: -100%;
     width:100%;
     aspect-ratio: 1/1; 
     z-index: 1;
-    clip-path: var(--Cbackground);
 }
 .Cshadow{
+    position: relative;
     aspect-ratio: 1/1; 
     margin-top: -100%; 
     width:100%;
     margin-left:0%;
-    background-image: var(--peiceshadowcolor);
-    clip-path:var(--Cshadow);
 }
 .H{
     position: relative;
@@ -421,7 +391,6 @@
     width:80%;
     aspect-ratio: 1/1;
     z-index: 2;
-    clip-path:var(--Hclip);
 }
 .Hbackground{
     position: relative;
@@ -430,7 +399,6 @@
     margin-left: 10%;
     margin-top: -80%;
     z-index: 1;
-    clip-path:var(--Hbackground)
 }
 .Hshadow{
     position: relative;
@@ -438,8 +406,6 @@
     margin-top: -80%; 
     width:80%;
     margin-left:10%;
-    background-image: var(--peiceshadowcolor);
-    clip-path:var(--Hshadow);
 }
 .B{
     position: relative;
@@ -448,7 +414,6 @@
     width:80%;
     aspect-ratio: 1/1;
     z-index: 2;
-    clip-path:var(--Bclip);
 }
 .Bbackground{
     position: relative;
@@ -457,7 +422,6 @@
     margin-left: 10%;
     margin-top: -80%;
     z-index: 1;
-    clip-path:var(--Bbackground)
 }
 .Bshadow{
     position: relative;
@@ -465,8 +429,6 @@
     aspect-ratio: 1/1; 
     margin-left: 10%;
     margin-top: -80%;
-    background-image: var(--peiceshadowcolor);
-    clip-path:var(--Bshadow);
 }
 .K{
     position: relative;
@@ -475,23 +437,21 @@
     margin-left:2%;
     aspect-ratio: 1/1;
     z-index: 2;
-    clip-path:var(--Kclip)
 }
 .Kbackground{
+    position: relative;
     aspect-ratio: 1/1; 
     margin-top: -95%; 
     width:95%;
     margin-left:2%;
     z-index: 1;
-    clip-path:var(--Kbackground)
 }
 .Kshadow{
+    position: relative;
     aspect-ratio: 1/1; 
     margin-top: -96%; 
     width:95%;
     margin-left:2%;
-    background-image: var(--peiceshadowcolor);
-    clip-path:var(--Kshadow)
 }
 .P{
     position: relative;
@@ -500,7 +460,6 @@
     width:60%;
     aspect-ratio: 1/1; 
     z-index: 2;
-    clip-path: var(--Pclip)
 }
 .Pbackground{
     position: relative;
@@ -509,7 +468,6 @@
     margin-left: 20%;
     margin-top: -60%;
     z-index: 1;
-    clip-path: var(--Pbackground)
 }
 .Pshadow{
     position: relative;
@@ -517,23 +475,6 @@
     margin-top: -60%; 
     width:60%;
     margin-left:20%;
-    background-image: var(--peiceshadowcolor);
-    clip-path:var(--Pshadow)
-}
-.player1{
-    background-image: var(--playeronepeicecolor);
-}
-.player2{
-    background-image:var(--playertwopeicecolor) ;
-}
-.player1background{
-    background-color: var(--peiceBcolor1);
-}
-.player2background{
-    background-color: var(--peiceBcolor2);
-}
-.selected{
-    background-color: var(--selectedcolor);
 }
 .screen{
     position: absolute;
@@ -542,7 +483,7 @@
     height:100%;
     width:100%;
     background-color:rgb(0, 0, 0,.8);
-    z-index: 5;
+    z-index: 30;
     display: flex;
 }
 .propeices{
@@ -554,13 +495,11 @@
 .pickwindow{
     margin: auto;
     padding:5%;
-    background-color: var(--pickwindowback);
+    text-align: center;
 }
 .notvisible{
     display: none;
 }
-
-
 .cube{
     position: relative;
     height:100%;
@@ -572,7 +511,6 @@
     width:100%;
     height: 10%;
     justify-content: space-between;
-    border-top:var(--logitemline);
 }
 .logspacestart{
     position: relative;
@@ -583,6 +521,19 @@
     position: relative;
     height:100%;
     width:100%;
+    z-index: 2;
+}
+.logbackstart{
+    position: relative;
+    height:100%;
+    width:100%;
+    top:-100%;
+}
+.logshadowstart{
+    position: relative;
+    height:100%;
+    width:100%;
+    top:-200%;  
 }
 .logtext{
     margin:0%;
@@ -592,14 +543,17 @@
 .arrow{
     height: 100%;
     aspect-ratio: 1/1;
-    background-color: var(--arrowcolor);
     clip-path:var(--arrowclip);
 }
 .sword{
     height: 100%;
     aspect-ratio: 1/1;
-    background-color: var(--swordcolor);
     clip-path:var(--swordclip)
+}
+.special{
+    height: 100%;
+    aspect-ratio: 1/1;
+    clip-path:var(--special)
 }
 .logspaceend{
     position: relative;

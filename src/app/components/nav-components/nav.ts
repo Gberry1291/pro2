@@ -1,35 +1,52 @@
-import { Component,input,Input,computed,inject,ViewEncapsulation,Inject} from '@angular/core';
-import {KeyValuePipe,NgClass} from '@angular/common';
+import { Component,computed,inject,ViewEncapsulation,Signal} from '@angular/core';
+import {NgClass} from '@angular/common';
 import {AuthService} from "../../auth.service";
-import {RouterOutlet, RouterLink, RouterLinkActive,Router} from '@angular/router';
-import {getStyle} from "../../services/styleingservice"
-
+import { Language } from '../../services/language.service';
+import { StyleService } from '../../services/styleingservice';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { transition, trigger,style,animate,state } from '@angular/animations';
+import { testuser } from '../../board-data/board.state';
 
 @Component({
   selector: 'nav',
   standalone: true,
-  imports: [KeyValuePipe,NgClass,RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive,NgClass],
   templateUrl: './nav.html',
-  styleUrls: getStyle(),
-  // styleUrls: AuthService.getStyle(),
+  styleUrls: ['../../styles/themes/simple.css','../../styles/component-layouts/nav-layout.css'],
   encapsulation: ViewEncapsulation.None,
+  animations:[
+    trigger('showlanguage', [
+      state('false',style({height:'0vh'})),
+      state('true',style({height:'30vh'})),
+      transition('* <=> *', [animate('.5s')]),
+    ]
+  )]
 })
 export class Nav {
 
   private authService: AuthService = inject(AuthService);
-  // public user = this.authService.user
-  public user= this.authService.testuser
+  public user = this.authService.user
+  public worddic:Signal<Array<string>>=computed(()=>this.Lang.langdic()["nav"])
+  showlanguage=false
+  public selectedstyle:Signal<string>=computed(()=>this.Style.selectedstyle())
 
-  constructor() {
+  constructor(private Lang: Language,private Style:StyleService) {
   }
 
   public logOut() {
     this.authService.logout()
   }
 
-  public ngOnInit() {
-    // this.boardservice.load2(this.user()?.email,this.opponent)
-}
+//   public async ngOnInit() {
+// }
+
+  slidelanguage(){
+    this.showlanguage=!this.showlanguage
+  }
+  async languagechange(language:string){
+    this.authService.savelanguage(language)
+    this.showlanguage=false
+  }
 
 
 }

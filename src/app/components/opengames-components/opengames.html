@@ -1,0 +1,29 @@
+<div class="openpage">
+
+    <ng-container *ngFor="let info of games()" >
+        <a [routerLink]="['/board', { email: info.opp,oppuid:info.oppuid }]" *ngIf="info.yourturn && !info.over" [ngClass]="['opengame','alertborder',('bodycolor'+selectedstyle()),('hovertomain'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomaintext'+selectedstyle())]">
+            <div class="wordhouse"><p [ngClass]="['buttontext']">{{worddic()[0]}}</p></div>
+            <div class="wordhouse"><p [ngClass]="['buttontext']">{{info.opp}}</p></div>
+            <div class="wordhouse"><p class="buttontext alert">{{worddic()[1]}}</p></div>
+        </a>
+     </ng-container>
+     <ng-container *ngFor="let info of games()" >
+        <a [routerLink]="['/board', { email: info.opp,oppuid:info.oppuid }]" *ngIf="!info.yourturn && !info.over" [ngClass]="['opengame',('bodycolor'+selectedstyle()),('maintile'+selectedstyle()),('hovertomain'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomaintext'+selectedstyle())]">
+            <div class="wordhouse"><p [ngClass]="['buttontext']">{{worddic()[0]}}</p></div>
+            <div class="wordhouse"><p [ngClass]="['buttontext']">{{info.opp}}</p></div>
+        </a>
+     </ng-container>
+
+     <ng-container *ngFor="let info of games()" >
+        <a [routerLink]="['/board', { email: info.opp,oppuid:info.oppuid }]" *ngIf="info.over && info.winner==user()?.email" [ngClass]="['opengame',('bodycolor'+selectedstyle()),('maintile'+selectedstyle()),('hovertomain'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomaintext'+selectedstyle())]">
+            <div class="wordhouse"><p [ngClass]="['buttontext']">Victory VS {{info.opp}}</p></div>
+        </a>
+     </ng-container>
+     <ng-container *ngFor="let info of games()" >
+        <a [routerLink]="['/board', { email: info.opp,oppuid:info.oppuid }]" *ngIf="info.over && info.winner!=user()?.email" [ngClass]="['opengame','alertborder',('bodycolor'+selectedstyle()),('maintile'+selectedstyle()),('hovertomain'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomaintext'+selectedstyle())]">
+            <div class="wordhouse"><p [ngClass]="['buttontext']">Lost VS {{info.opp}}</p></div>
+        </a>
+     </ng-container>
+    
+
+</div>

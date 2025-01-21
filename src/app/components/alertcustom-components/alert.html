@@ -1,0 +1,34 @@
+<div [ngClass]="['alerthouse',onORoff()]" (click)="end()">
+
+    <div class="infohouse">
+
+        <div class="loadinghouse">
+            <div class="loading">
+                <div [ngClass]="['cover',spin()?'grid':'off']">
+                    <div class="circle" [@spinning]="{value: pacman,params: {pac: spinval+'deg'}}"
+                    >
+                        <div class="pacman"></div>
+                        <div class="topmouth" [@topmouth]="mouthmovetop"></div>
+                        <div class="bottommouth" [@bottommouth]="mouthmovebottom"></div>
+                    </div>
+                    <div class="dot one" [@dots]="showdots[1].toString()"></div>
+                    <div class="dot two" [@dots]="showdots[2].toString()"></div>
+                    <div class="dot three" [@dots]="showdots[3].toString()"></div>
+                    <div class="dot four" [@dots]="showdots[4].toString()"></div>
+                    <div class="dot five" [@dots]="showdots[5].toString()"></div>
+                    <div class="dot six" [@dots]="showdots[6].toString()"></div>
+                    <div class="dot seven" [@dots]="showdots[7].toString()"></div>
+                    <div class="dot eight" [@dots]="showdots[8].toString()"></div>
+                </div>
+            </div>
+        </div>
+        <div class="maintext">
+            <p class="centertext">{{maintext()}}</p>
+        </div>
+        <div class="subtext">
+            <p class="centertext">{{subtext()}}</p>
+        </div>
+
+    </div>
+
+</div>

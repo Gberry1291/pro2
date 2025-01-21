@@ -1,16 +1,10 @@
 <div [ngClass]="['page',('bodycolor'+selectedstyle())]"></div>
 
-<log [log]="spaces2().log" [animateslide]="showlog">
-</log>
-
 <div class="board">
-    <board-space *ngFor="let square of spaces2().board|keyvalue;"
+    <board-space *ngFor="let square of boardservice().board|keyvalue;"
         [turnplayer]=selectedplayer() [square]=square.value [location]=square.key [color]=square.value.space [origcolor]=square.value.space (sendpeice)="selectpeice($event)">
     </board-space>
 </div>
-
-<buttons class="buttonhouse" (emitclick)="buttonclick($event)" [animateslide]="showlog" [savebutton]=save() [undobutton]=undo() [returntostartbutton]=returntostart()>
-</buttons>
 
 <promotion-select [turnplayer]=notplayer() (sendpeice)="promotionFunc($event)" [ngClass]="['screen',promotion]">
 </promotion-select>

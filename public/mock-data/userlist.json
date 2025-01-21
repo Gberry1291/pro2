@@ -1,4 +1,5 @@
 [
-  ["kuchtagary1@gmail.com",{"theme":"simple","army":"classical"}],
-  ["test@test.com",{"theme":"simple","army":"classical"}]
+  ["kuchtagary1@gmail.com",{"theme":"simple","army":"classical","rank":1,"points":500}],
+  ["test@test.com",{"theme":"simple","army":"classical","rank":2,"points":200}],
+  ["google",{"theme":"simple","army":"classical","rank":3,"points":100}]
 ]

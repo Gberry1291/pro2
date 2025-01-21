@@ -1,19 +1,26 @@
-<div class="pickwindow">
-    <p>You have acheived the highest honor a pawn can obtain.</p>
-    <p>As a reward you shall receive a new title</p>
-    <p>Choose your new life:</p>
+<div [ngClass]="['pickwindow',('bodycolor'+selectedstyle())]">
+    <p [ngClass]="['bodytextcolor'+selectedstyle()]">{{worddic()[3]}}</p>
+    <p [ngClass]="['bodytextcolor'+selectedstyle()]">{{worddic()[4]}}</p>
     <div class="propeices">
-        <div class="blackspace">
-            <div class="C player1" (click)="clickpeice('C')"></div>
+        <div [ngClass]="[('blackspace'+selectedstyle())]" (click)="clickpeice('C')">
+            <div [ngClass]="['C',(turnplayer+'color'+selectedstyle()),('Cclip'+selectedarmy()),((turnplayer+'C'+selectedstyle()+selectedarmy()))]"></div>
+            <div [ngClass]="['Cbackground',(turnplayer+'B'+selectedstyle()),('Cbackground'+selectedarmy()),((turnplayer+'B'+'C'+selectedstyle()+selectedarmy()))]"></div>
+            <div [ngClass]="['Cshadow',(turnplayer+'shadow'+selectedstyle()),('Cshadow'+selectedarmy()),((turnplayer+'S'+'C'+selectedstyle()+selectedarmy()))]"></div>
         </div>
-        <div class="whitespace">
-            <div class="B player1" (click)="clickpeice('B')"></div>
+        <div [ngClass]="[('whitespace'+selectedstyle())]" (click)="clickpeice('B')">
+            <div [ngClass]="['B',(turnplayer+'color'+selectedstyle()),('Bclip'+selectedarmy()),((turnplayer+'B'+selectedstyle()+selectedarmy()))]"></div>
+            <div [ngClass]="['Bbackground',(turnplayer+'B'+selectedstyle()),('Bbackground'+selectedarmy()),((turnplayer+'B'+'B'+selectedstyle()+selectedarmy()))]"></div>
+            <div [ngClass]="['Bshadow',(turnplayer+'shadow'+selectedstyle()),('Bshadow'+selectedarmy()),((turnplayer+'S'+'B'+selectedstyle()+selectedarmy()))]"></div>
         </div>
-        <div class="blackspace">
-            <div class="H player1" (click)="clickpeice('H')"></div>
+        <div [ngClass]="[('blackspace'+selectedstyle())]" (click)="clickpeice('H')">
+            <div [ngClass]="['H',(turnplayer+'color'+selectedstyle()),('Hclip'+selectedarmy()),((turnplayer+'H'+selectedstyle()+selectedarmy()))]"></div>
+            <div [ngClass]="['Hbackground',(turnplayer+'B'+selectedstyle()),('Hbackground'+selectedarmy()),((turnplayer+'B'+'H'+selectedstyle()+selectedarmy()))]"></div>
+            <div [ngClass]="['Hshadow',(turnplayer+'shadow'+selectedstyle()),('Hshadow'+selectedarmy()),((turnplayer+'S'+'H'+selectedstyle()+selectedarmy()))]"></div>
         </div>
-        <div class="whitespace">
-            <div class="Q player1" (click)="clickpeice('Q')"></div>
+        <div [ngClass]="[('whitespace'+selectedstyle())]" (click)="clickpeice('Q')">
+            <div [ngClass]="['Q',(turnplayer+'color'+selectedstyle()),('Qclip'+selectedarmy()),((turnplayer+'Q'+selectedstyle()+selectedarmy()))]"></div>
+            <div [ngClass]="['Qbackground',(turnplayer+'B'+selectedstyle()),('Qbackground'+selectedarmy()),((turnplayer+'B'+'Q'+selectedstyle()+selectedarmy()))]"></div>
+            <div [ngClass]="['Qshadow',(turnplayer+'shadow'+selectedstyle()),('Qshadow'+selectedarmy()),((turnplayer+'S'+'Q'+selectedstyle()+selectedarmy()))]"></div>
         </div>
     </div>
 </div>

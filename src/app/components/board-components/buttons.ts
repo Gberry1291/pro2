@@ -1,17 +1,18 @@
-import { Component,Input,input,output} from '@angular/core';
-import { Board } from './board';
-import {NgClass,NgFor,NgIf} from '@angular/common';
+import { Component,input,output,Signal,computed} from '@angular/core';
+import {NgClass,NgIf} from '@angular/common';
 import { transition, trigger,style,animate,state } from '@angular/animations';
+import { StyleService } from '../../services/styleingservice';
+import { Language } from '../../services/language.service';
 
 @Component({
   selector: 'buttons',
   standalone: true,
-  imports: [Board,NgClass,NgFor,NgIf],
+  imports: [NgClass,NgIf],
   templateUrl: './buttons.html',
   animations:[
     trigger('showlog', [
       state(        
-        'true',style({left: '50vw',rotate:'180deg'}),      
+        'true',style({left: '55vw',rotate:'180deg'}),      
       ),
       state(        
         'false',style({left:'0%',rotate:'0deg'})   
@@ -27,11 +28,14 @@ export class Buttons {
   public undobutton=input.required<boolean>();
   public savebutton=input.required<boolean>();
   public returntostartbutton=input.required<boolean>();
+  public selectedstyle:Signal<string>=computed(()=>this.Style.selectedstyle())
+  public worddic:Signal<Array<string>>=computed(()=>this.Lang.langdic()["board"])
 
-  constructor() {}
+
+  constructor(private Style:StyleService,private Lang: Language) {}
+
 
   public onClick(which:string) {
-    console.log(which)
     this.emitclick.emit(which);
 }
 

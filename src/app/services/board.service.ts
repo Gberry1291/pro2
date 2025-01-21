@@ -1,21 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Peice,BoardLayout,databank,movementLog } from '../board-data/board.state';
-import { merge,cloneArray } from '../board-data/helpers';
+import { Injectable, signal,inject } from '@angular/core';
+import { databank,movementLog } from '../board-data/board.state';
+import { cloneBoard } from '../board-data/helpers';
+import { AuthService } from "../auth.service";
 
 @Injectable({providedIn: 'root'})
 export class BuildBoard {
     public movementLog = signal<movementLog[]>([]);
     public player="player1"
     public opponent="player2"
+    private authService: AuthService = inject(AuthService);
 
     constructor(private http: HttpClient) {
 
     }
 
     public board = signal<databank>(
-        {"id":"example","player1":"","player2":"","turnplayer":"","incheck":false,"log":[],"board":{
+        {"id":"example","player1":"","player2":"","turnplayer":"","p1uid":"4","p2uid":"6","incheck":false,"log":[],"over":false,"winner":"none","loser":"none",
+            "board":{
             "11":{"peice":"C","player":"player1","x":1,"y":1,"legal":false,"space":"blackspace","top":"0","left":"0","animate":"start"},
             "21":{"peice":"H","player":"player1","x":2,"y":1,"legal":false,"space":"whitespace","top":"0","left":"0","animate":"start"},
             "31":{"peice":"B","player":"player1","x":3,"y":1,"legal":false,"space":"blackspace","top":"0","left":"0","animate":"start"},
@@ -83,26 +85,48 @@ export class BuildBoard {
         }}
     );
 
-    public load2(one:any,two:any): Observable<Array<databank>> {
-        let obs= this.http.get<Array<databank>>('mock-data/opengames.json');
-        obs.subscribe((result) => {
-            let found=false
-            result.forEach(element => {
-                if ((element.player1==one||element.player2==one) && (element.player1==two||element.player2==two)) {
-                    this.board.set(element);
-                    found=true
-                }
-            });
-            if (!found) {
-                this.board.set(result[0]);
-                this.board().player1=one;
-                this.board().player2=two;   
-                this.board().turnplayer=one;
-                this.board.set({...this.board()})  
-            }
-        });
+    public async load(one:any,two:any,oneid:any,twoid:any){
+        let foundboard:databank
+        let found=await this.authService.getboard(one,two)
 
-        return obs
+        if (found!.id!="example") {
+            let cloaned=cloneBoard(found!)
+            this.board.set(cloaned);
+            foundboard=cloaned      
+        }else{
+            let cloned=cloneBoard(found!)
+            cloned.player1=one;
+            cloned.player2=two;   
+            cloned.turnplayer=one;
+            cloned.id=one+"v"+two;
+            cloned.p1uid=oneid;
+            cloned.p2uid=twoid;
+            cloned.over=false;
+            this.board.set(cloned);
+            foundboard=cloned
+        }
+
+        return foundboard
+    }
+
+    public async PullOpenGames(username:string){
+
+        let gamelist=await this.authService.pullopengames(username)
+
+        return gamelist
+    }
+
+    public save(){
+        // testboarddata.forEach(element => {
+        //     if ((element.player1==this.board().player1||element.player2==this.board().player1) && (element.player1==this.board().player2||element.player2==this.board().player2)) {
+        //         element.turnplayer=this.board().turnplayer
+        //         element.log=this.board().log
+        //         element.board=this.board().board
+        //         element.incheck=this.board().incheck
+        //     }
+        // });
+
+        this.authService.saveboard(this.board())
     }
 
 
