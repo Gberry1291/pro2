@@ -1,6 +1,5 @@
 import { Component,Input,input,output,computed,Signal} from '@angular/core';
-import { Board } from './board';
-import {KeyValuePipe,NgClass} from '@angular/common';
+import { NgClass} from '@angular/common';
 import { BoardPeice } from './board-peice';
 import { Peice,Location} from '../../board-data/board.state';
 import { StyleService } from '../../services/styleingservice';

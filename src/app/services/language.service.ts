@@ -1,5 +1,4 @@
-import { Injectable,computed } from '@angular/core';
-import {AuthService} from "../auth.service";
+import { Injectable,inject,signal } from '@angular/core';
 import { langdic } from '../board-data/board.state';
 
 @Injectable({providedIn: 'root'})
@@ -9,7 +8,7 @@ export class Language {
         "eng":{
             "nav":["Home","Open Games","Rank","Settings","Logout","Login"],
             "home":["New PVP game","opp email","New game vs AI","Send Challenge!","Sign Up to play against other users and build your rank!"],
-            "opengames":["VS","Your Move!"],
+            "opengames":["VS","Your Move!","Victory","Defeat","Waiting...","Finished"],
             "rank":["LeaderBoard"],
             "settings":["Website Color-Scheme","Simple","Park","Programmer","Army Style","Classical","Japanese","Save","Saving","this should only take a minute","Save Succesful","click to close"],
             "login":["Sign in","Continue with Google","Or","Create/login with us","Login","Create Account"],
@@ -21,7 +20,7 @@ export class Language {
         "de":{
             "nav":["Heim","Offene Spiele","Rang","Einstellungen","Abmelden","Login"],
             "home":["neues PVP-Spiel","gegner email","neues Spiel gegen KI","Herausforderung senden!","Melden Sie sich an, um gegen andere Benutzer zu spielen und Ihren Rang zu verbessern!"],
-            "opengames":["VS","Dein Zug!"],
+            "opengames":["VS","Dein Zug!","Sieg","Verlust","Warten...","Fertig"],
             "rank":["Bestenliste"],
             "settings":["Website-Farbschema","Einfach","Park","Programmierer","Army-Stil","Klassisch","Japanisch","Speichern","Speichern","dies sollte nur eine Minute dauern","Speichern erfolgreich","zum Schließen klicken"],
             "login":["Anmelden", "Weiter mit Google", "Oder", "Mit uns erstellen/anmelden", "Anmelden", "Konto erstellen"],
@@ -33,7 +32,7 @@ export class Language {
         "fr":{
             "nav":["Maison","jeux ouverts","Rang","Paramètres","Déconnexion","Se connecter"],
             "home":["Nouveau jeu PvP","E-mail des adversaires","nouveau jeu contre IA","Envoyez le défi !","Inscrivez-vous pour jouer contre d'autres utilisateurs et augmenter votre classement !"],
-            "opengames":["Contre","votre déménagement!"],
+            "opengames":["Contre","votre déménagement!","victoire","Défaite","en attendant...","Finie"],
             "rank":["Tableau des leaders"],
             "settings":["Schéma de couleurs du site Web", "Simple", "Parc", "Programmeur", "Style militaire", "Classique", "Japonais","Sauvegarder","Enregistrement", "Cela ne devrait prendre qu'une minute", "Enregistrement réussi", "Cliquez pour fermer"],
             "login":["Connexion", "Continuer avec Google", "Ou", "Créer/connecter avec nous", "Connexion", "Créer un compte"],
@@ -43,7 +42,12 @@ export class Language {
         }
     }
 
-    public langdic=computed(()=>this.language[this.Auth.userinfo().language])
+    constructor() {}
 
-    constructor(private Auth: AuthService) {}
+    public langdic=signal(this.language["eng"])
+
+    public changelanguage(newlanguage:string){
+        this.langdic.set(this.language[newlanguage])
+    }
+    
 }

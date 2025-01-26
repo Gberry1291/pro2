@@ -1,6 +1,6 @@
 // import { Location } from '@angular/common';
-import { databank,Location,BoardLayout,legalmoves, Peice } from '../board-data/board.state';
-import { computed, signal } from '@angular/core';
+import { databank,Location,BoardLayout,legalmoves } from '../board-data/board.state';
+import { signal } from '@angular/core';
 import { Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})

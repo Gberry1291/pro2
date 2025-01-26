@@ -3,16 +3,15 @@ import {NgClass} from '@angular/common';
 import {AuthService} from "../../auth.service";
 import { Language } from '../../services/language.service';
 import { StyleService } from '../../services/styleingservice';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive,Router } from '@angular/router';
 import { transition, trigger,style,animate,state } from '@angular/animations';
-import { testuser } from '../../board-data/board.state';
 
 @Component({
   selector: 'nav',
   standalone: true,
   imports: [RouterLink, RouterLinkActive,NgClass],
   templateUrl: './nav.html',
-  styleUrls: ['../../styles/themes/simple.css','../../styles/component-layouts/nav-layout.css'],
+  styleUrls: ['../../styles/component-layouts/nav-layout.css'],
   encapsulation: ViewEncapsulation.None,
   animations:[
     trigger('showlanguage', [
@@ -30,15 +29,12 @@ export class Nav {
   showlanguage=false
   public selectedstyle:Signal<string>=computed(()=>this.Style.selectedstyle())
 
-  constructor(private Lang: Language,private Style:StyleService) {
+  constructor(private Lang: Language,private Style:StyleService,private router: Router) {
   }
 
   public logOut() {
     this.authService.logout()
   }
-
-//   public async ngOnInit() {
-// }
 
   slidelanguage(){
     this.showlanguage=!this.showlanguage

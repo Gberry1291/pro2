@@ -1,55 +1,66 @@
-import {inject, Injectable, Signal,signal,computed} from '@angular/core';
+import { Injectable, Signal,signal } from '@angular/core';
 import {Auth, GoogleAuthProvider, signInWithPopup, user, User,onAuthStateChanged} from '@angular/fire/auth';
 import {Router} from "@angular/router";
 import {toSignal} from "@angular/core/rxjs-interop";
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 
 import { getFirestore } from "firebase/firestore";
-import { doc, getDoc,collection,setDoc,addDoc,query, where, getDocs,increment,updateDoc} from "firebase/firestore";
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { doc,getDoc,collection,setDoc,query,getDocs,increment,updateDoc } from "firebase/firestore";
+import { initializeApp } from '@angular/fire/app';
 import { databank, testuser,opengame,endgame } from './board-data/board.state';
 import { testboarddata } from './services/save.service';
+import { Language } from './services/language.service';
+import { StyleService } from './services/styleingservice';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private auth: Auth = inject(Auth);
-  private router: Router = inject(Router)
-  public user: Signal<User | undefined> = toSignal(user(this.auth));
-  public userinfo=signal<testuser>({name:"",theme:"simple",army:"classical",points:0,language:"eng",uid:""})
+  public userinfo=signal<testuser>({name:"guest",theme:"simple",army:"classical",points:0,language:"eng",uid:""})
   public opengames=signal<Array<opengame>>([])
   public userlist=signal<Array<testuser>>([])
 
+  newbie;
+  user:Signal<User|undefined>;
 
-  public newbie=onAuthStateChanged(this.auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      const nameo = user.email
-      this.setuserdata(uid,nameo!)
-      this.pullopengames(nameo!)
-      this.getusersrank()
-    } else {
+    constructor(
+      private lang: Language,
+      private style:StyleService,
+      private router:Router,
+      private auth:Auth
+    ) {
+        this.newbie=onAuthStateChanged(this.auth, (user) => {
+          if (user) {
+            const uid = user.uid;
+            const nameo = user.email
+            this.setuserdata(uid,nameo!)
+            this.pullopengames(nameo!)
+            this.getusersrank()
+            this.lang.changelanguage(this.userinfo().language)
+            this.style.changetheme(this.userinfo().theme,this.userinfo().army)
+          } else {
+          }
+        
+        });
+        this.user=toSignal(user(this.auth))
     }
-  });
-
 
 
   public async loginWithGoogle() {
-    await signInWithPopup(this.auth, new GoogleAuthProvider())
+    await signInWithPopup(this.auth!, new GoogleAuthProvider())
         .then(response => {
           if (response.user) {
-            this.router.navigate(['/']);
+            this.router!.navigate(['/']);
           } else {
             console.error('Login failed')
           }
         })
   }
   public async createuser(email:string,password:string){
-    await createUserWithEmailAndPassword(this.auth, email, password)
+    await createUserWithEmailAndPassword(this.auth!, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      this.router.navigate(['']);
+      this.router!.navigate(['']);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -57,10 +68,10 @@ export class AuthService {
     });
   }
   public async normallogin(email:string,password:string){
-    signInWithEmailAndPassword(this.auth, email, password)
+    signInWithEmailAndPassword(this.auth!, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      this.router.navigate(['']);
+      this.router!.navigate(['']);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -68,10 +79,12 @@ export class AuthService {
     });
   }
   public async logout() {
-      await this.auth.signOut().then(() => {
-          this.router.navigate(['/login']);
+      await this.auth!.signOut().then(() => {
+          this.router!.navigate(['/login']);
       });
   }
+
+
   public async getusersrank(){
     const app = initializeApp({"projectId":"pro2-5d1c8","appId":"1:233491030117:web:161573c89bd5a83fdd668c","storageBucket":"pro2-5d1c8.appspot.com","apiKey":"AIzaSyCAdMjkLfrEdyr5M96Oh3TJD-QBdTIYG8Y","authDomain":"pro2-5d1c8.firebaseapp.com","messagingSenderId":"233491030117"})
     const db = getFirestore(app);
@@ -102,7 +115,7 @@ export class AuthService {
     let listo
     let found=false
     querySnapshot.forEach((doc) => {
-      if ((doc.data()["player1"]==player1||doc.data()["player2"]==player1) && (doc.data()["player1"]==player2||doc.data()["player2"]==player2)) {
+      if ((doc.data()["player1"]==player1||doc.data()["player2"]==player1) && (doc.data()["player1"]==player2||doc.data()["player2"]==player2) && (!doc.data()["over"])) {
         found=true
         listo=doc.data()
     }
@@ -146,6 +159,7 @@ export class AuthService {
 
   }
 
+
   public async saveboard(datainput:databank){
     const app = initializeApp({"projectId":"pro2-5d1c8","appId":"1:233491030117:web:161573c89bd5a83fdd668c","storageBucket":"pro2-5d1c8.appspot.com","apiKey":"AIzaSyCAdMjkLfrEdyr5M96Oh3TJD-QBdTIYG8Y","authDomain":"pro2-5d1c8.firebaseapp.com","messagingSenderId":"233491030117"})
     const db = getFirestore(app);
@@ -160,7 +174,6 @@ export class AuthService {
     // });
     await setDoc(doc(db, "opengames", datainput.id),datainput);
   }
-
   public async setuserdata(uid:string,name:string){
     const app = initializeApp({"projectId":"pro2-5d1c8","appId":"1:233491030117:web:161573c89bd5a83fdd668c","storageBucket":"pro2-5d1c8.appspot.com","apiKey":"AIzaSyCAdMjkLfrEdyr5M96Oh3TJD-QBdTIYG8Y","authDomain":"pro2-5d1c8.firebaseapp.com","messagingSenderId":"233491030117"})
     const db = getFirestore(app);
@@ -189,13 +202,13 @@ export class AuthService {
       await setDoc(doc(db, "users", this.user()!.uid),this.userinfo());
     }
   }
-
   public async savelanguage(newlanguage:string){
     this.userinfo().language=newlanguage
     this.userinfo.set({...this.userinfo()})
     if (this.user()) {
       this.saveuserinfo()
     }
+    this.lang.changelanguage(this.userinfo().language)
   }
   public async savestyles(theme:string,army:string){
     this.userinfo().theme=theme
@@ -204,6 +217,7 @@ export class AuthService {
     if (this.user()) {
       this.saveuserinfo()
     }
+    this.style.changetheme(this.userinfo().theme,this.userinfo().army)
   }
   public async saveendgame(data:endgame){
     const app = initializeApp({"projectId":"pro2-5d1c8","appId":"1:233491030117:web:161573c89bd5a83fdd668c","storageBucket":"pro2-5d1c8.appspot.com","apiKey":"AIzaSyCAdMjkLfrEdyr5M96Oh3TJD-QBdTIYG8Y","authDomain":"pro2-5d1c8.firebaseapp.com","messagingSenderId":"233491030117"})

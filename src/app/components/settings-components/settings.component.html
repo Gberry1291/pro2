@@ -1,6 +1,5 @@
 <div [ngClass]="['settingspage',('bodycolor'+selectedstyle())]">
 
-
     <div [ngClass]="['settingshouse',('secondbodytextcolor'+selectedstyle())]">
 
         <div [ngClass]="['settingsitem','themeitem',('secondmainborder'+selectedstyle())]">
@@ -9,7 +8,6 @@
                 <div class="topoption"><p class="centertext">{{theme}}</p></div>
                 <div [ngClass]="[themetog, 'optionhouse',('mainbackgroundcolor'+selectedstyle())]" [@showop]="{value: themetog}">
                     <div [ngClass]="['themeoption',('maintextcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="changetheme('simple')"><p class="centertext">{{worddic()[1]}}</p></div>
-                    <div [ngClass]="['themeoption',('maintextcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="changetheme('park')"><p class="centertext">{{worddic()[2]}}</p></div>
                     <div [ngClass]="['themeoption',('maintextcolor'+selectedstyle()),('hovertosecond'+selectedstyle())]" (click)="changetheme('programmer')"><p class="centertext">{{worddic()[3]}}</p></div>
                 </div>
             </div>

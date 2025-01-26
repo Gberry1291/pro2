@@ -1,3 +1,31 @@
-<div [ngClass]="[square().peice,(square().player+'color'+selectedstyle()),(square().peice+'clip'+selectedarmy()),((square().player+square().peice+selectedstyle()+selectedarmy()))]" [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"></div>
-<div [ngClass]="[(square().peice+'background'),(square().player+'B'+selectedstyle()),(square().peice+'background'+selectedarmy()),((square().player+'B'+square().peice+selectedstyle()+selectedarmy()))]" [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"></div>
-<div [ngClass]="[(square().peice+'shadow'),(square().player+'shadow'+selectedstyle()),(square().peice+'shadow'+selectedarmy()),((square().player+'S'+square().peice+selectedstyle()+selectedarmy()))]" [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"></div>
+<div 
+    [ngClass]="[
+        square().peice,(square().player+'color'+selectedstyle()),
+        (square().peice+'clip'+selectedarmy()),
+        ((square().player+square().peice+selectedstyle()+selectedarmy()))
+    ]" 
+    [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"
+>
+</div>
+
+<div 
+    [ngClass]="[
+        (square().peice+'background'),
+        (square().player+'B'+selectedstyle()),
+        (square().peice+'background'+selectedarmy()),
+        ((square().player+'B'+square().peice+selectedstyle()+selectedarmy()))
+    ]" 
+    [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"
+>
+</div>
+
+<div 
+    [ngClass]="[
+        (square().peice+'shadow'),
+        (square().player+'shadow'+selectedstyle()),
+        (square().peice+'shadow'+selectedarmy()),
+        ((square().player+'S'+square().peice+selectedstyle()+selectedarmy()))
+    ]" 
+    [@moveup]="{value: square().animate, params: {wherex: square().top,wherey:square().left}}"
+>
+</div>

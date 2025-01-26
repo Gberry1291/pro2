@@ -1,35 +1,35 @@
 <div id="nav" [ngClass]="['flex',('navgradient'+selectedstyle()),('mainbackgroundcolor'+selectedstyle())]">
     <div class="flex left">
+        <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle())]" routerLink="/" [routerLinkActive]="['secondbackgroundcolor'+selectedstyle()]" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">
+            <p class="navtext">{{worddic()[0]}}</p>
+        </a>
         @if(this.user()){
-            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-                <p class="navtext">{{worddic()[0]}}</p>
-            </a>
-            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/opengames" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle())]" routerLink="/opengames" [routerLinkActive]="['secondbackgroundcolor'+selectedstyle()]" ariaCurrentWhenActive="page">
                 <p class="navtext">{{worddic()[1]}}</p>
             </a>
-            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/rank" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle())]" routerLink="/rank" [routerLinkActive]="['secondbackgroundcolor'+selectedstyle()]" ariaCurrentWhenActive="page">
                 <p class="navtext">{{worddic()[2]}}</p>
             </a>
         }
     </div>
-    <a routerLink="/" class="middle">
-        <div [ngClass]="['logo',('logo'+selectedstyle()),('bodycolor'+selectedstyle())]"></div>
-    </a>
+    <div class="middle">
+        <clip-path [ngClass]="['logo',('logo'+selectedstyle()),('bodycolor'+selectedstyle())]"></clip-path>
+    </div>
     <div class="flex right">
-        <div [ngClass]="['languageitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" (click)="slidelanguage()">
+        <div [ngClass]="['languageitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle())]" (click)="slidelanguage()">
             <p class="languagetext">Language</p>
             <p class="languagetext">sprache</p>
             <p class="languagetext">Langue</p>
         </div>
         @if(this.user()){
-            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/settings" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle())]" routerLink="/settings" [routerLinkActive]="['secondbackgroundcolor'+selectedstyle()]" ariaCurrentWhenActive="page">
                 <p class="navtext">{{worddic()[3]}}</p>
             </a>
-            <div (click)="logOut()" [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]">
+            <div (click)="logOut()" [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle())]">
                 <p class="navtext">{{worddic()[4]}}</p>
             </div>
         }@else{
-            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle()),('navitemclip'+selectedstyle())]" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <a [ngClass]="['navitem',('navitem'+selectedstyle()),('maintextcolor'+selectedstyle()),('navitemgradient'+selectedstyle())]" routerLink="/login" [routerLinkActive]="['secondbackgroundcolor'+selectedstyle()]" ariaCurrentWhenActive="page">
                 <p class="navtext">
                     {{worddic()[5]}}
                 </p>

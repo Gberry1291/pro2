@@ -12,7 +12,6 @@ import { Alert } from './components/alertcustom-components/alert';
 export class AppComponent {
   title = 'pro2';
 
-
   constructor() {
   }
 

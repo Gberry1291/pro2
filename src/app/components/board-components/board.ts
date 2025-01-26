@@ -203,34 +203,6 @@ export class Board {
       this.holder().peice=""
       this.holder().player="player0"
     }
-    // this.boardservice().incheck=false
-    // looks to see if the peice you moved puts opponent in check
-    // let thispeice:Array<number>=this.moveservice.moveManager(local,this.selectedplayer(),this.notplayer()).legalmoves
-    // let lookforcheck=this.moveservice.lookForCheck(thispeice,this.notplayer())
-    // if (lookforcheck) {
-    //   this.boardservice().incheck=true
-    //   this.moveservice.AllOpponentMoves(this.notplayer(),this.selectedplayer())
-    //   if (!this.moveservice.GameOverCheck(this.notplayer(),this.selectedplayer())) {
-    //     this.endcleanup(this.worddic()[9],this.worddic()[10])
-    //   }  
-    // }else{
-    //   this.moveservice.AllOpponentMoves(this.notplayer(),this.selectedplayer())
-    //   if (this.moveservice.DrawCheck(this.notplayer(),this.selectedplayer())) {
-    //     this.endcleanup(this.worddic()[11],this.worddic()[12])
-    //   }  
-    // }
-    // if (local.peice.peice=="P"&&(local.peice.y==1||local.peice.y==8)) {
-    //   this.promotion="visible";
-    //   this.holder.set(local.peice)
-    // }
-    // // looks at your peices for a revealed check
-    // let revealcheck=this.moveservice.lookForRevealCheck(this.selectedplayer(),this.notplayer())
-    // if (revealcheck) {
-    //   this.boardservice().incheck=true
-    // }
-
-    // this.selected.set(false);
-    // this.changeturn()
     this.boardservice().incheck=false
 
     // promotion check
@@ -421,6 +393,7 @@ export class Board {
     if (event=="save") {
       this.Alert.alert("on",this.worddic()[5],this.worddic()[6],true)
       this.boardserviceo.save()
+      this.authService.pullopengames(this.user()?.email||"error")
       this.yourturn.set(false)
       this.Alert.alert("on",this.worddic()[7],this.worddic()[8],false)
       this.Alert.clickable()

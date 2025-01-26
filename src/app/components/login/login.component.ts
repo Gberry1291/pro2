@@ -26,15 +26,12 @@ export class LoginComponent {
 
     login(){
         this.authService.normallogin(this.email.value,this.password.value)
-        // this.authService.testsignin(this.email.value)
     }
     signup(){
-        // this.authService.testsignin(this.email.value)
         this.authService.createuser(this.email.value,this.password.value)
     }
 
     public signInWithGoogle() {
         this.authService.loginWithGoogle()
-        // this.authService.testsignin("kuchtagary1@gmail.com")
     }
 }

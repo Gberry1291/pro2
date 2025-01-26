@@ -9,10 +9,8 @@ export class BuildBoard {
     public movementLog = signal<movementLog[]>([]);
     public player="player1"
     public opponent="player2"
-    private authService: AuthService = inject(AuthService);
 
-    constructor(private http: HttpClient) {
-
+    constructor(private authService:AuthService) {
     }
 
     public board = signal<databank>(
@@ -87,7 +85,7 @@ export class BuildBoard {
 
     public async load(one:any,two:any,oneid:any,twoid:any){
         let foundboard:databank
-        let found=await this.authService.getboard(one,two)
+        let found=await this.authService?.getboard(one,two)
 
         if (found!.id!="example") {
             let cloaned=cloneBoard(found!)
@@ -111,22 +109,13 @@ export class BuildBoard {
 
     public async PullOpenGames(username:string){
 
-        let gamelist=await this.authService.pullopengames(username)
+        let gamelist=await this.authService?.pullopengames(username)
 
         return gamelist
     }
 
     public save(){
-        // testboarddata.forEach(element => {
-        //     if ((element.player1==this.board().player1||element.player2==this.board().player1) && (element.player1==this.board().player2||element.player2==this.board().player2)) {
-        //         element.turnplayer=this.board().turnplayer
-        //         element.log=this.board().log
-        //         element.board=this.board().board
-        //         element.incheck=this.board().incheck
-        //     }
-        // });
-
-        this.authService.saveboard(this.board())
+        this.authService?.saveboard(this.board())
     }
 
 

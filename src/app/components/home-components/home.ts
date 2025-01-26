@@ -116,7 +116,6 @@ export class Home {
   }
 
   sendchallenge(){
-    // this.router.navigate(['board/'+this.oppemail.value+this.oppuid]);
     this.router.navigate(['/board', { email: this.oppemail.value,uid:this.oppuid }]);
   }
 

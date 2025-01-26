@@ -1,8 +1,6 @@
-import { Component,Input,Output,Signal,signal,computed,WritableSignal,ChangeDetectionStrategy,ViewEncapsulation,inject } from '@angular/core';
+import { Component,Input,Output,Signal,signal,computed,ChangeDetectionStrategy,ViewEncapsulation } from '@angular/core';
 import { BoardSpace } from './board-space';
 import { Promotion } from './promotion';
-import { Buttons } from './buttons';
-import { Log } from './log'
 import { NgFor,KeyValuePipe,NgClass } from '@angular/common';
 import { Peice,BoardLayout,Location,databank,movementLog,legalmoves } from '../../board-data/board.state';
 import { FindLegalAI } from '../../services/AI.service';

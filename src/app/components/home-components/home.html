@@ -1,4 +1,4 @@
-<div [ngClass]="['page',('bodycolor'+selectedstyle())]" class="page" (click)="resetsugg()">
+<div [ngClass]="['page',('bodycolor'+selectedstyle())]" (click)="resetsugg()">
     
     <div [ngClass]="['maintile','mainL',('maintile'+selectedstyle()),('bodycolor'+selectedstyle())]">
         @if(this.user()){
@@ -30,7 +30,7 @@
                 </div>
             </button>
         }@else{
-            <div [ngClass]="['titlediv',('secondbodytextcolor'+selectedstyle())]">
+            <div [ngClass]="['nouser',('secondbodytextcolor'+selectedstyle())]">
                 <p class="titletext">
                     {{worddic()[4]}}
                 </p>

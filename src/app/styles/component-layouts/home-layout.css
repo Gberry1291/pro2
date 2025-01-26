@@ -109,9 +109,17 @@ input:focus {
     display: flex;
     transition: background-color 1s;
 }
+.nouser{
+    position: relative;
+    left:10%;
+    top:10%;
+    height: 80%;
+    width:80%;
+    display: flex;
+}
 .vsai{
     height:100%;
-    width:100%;
+    width:50%;
     display: flex;
     grid-row: 1;
     grid-column: 1;
@@ -127,6 +135,10 @@ input:focus {
     display: flex;
     border:none;
     border-radius: 10px;
+    transition: background-color .4s;
+}
+.button:hover{
+    cursor: pointer;
 }
 .buttontext{
     height:100%;
@@ -196,19 +208,19 @@ input:focus {
 
 @media only screen and (orientation: portrait) {
     .maintile{
-        left:25%;
-        width:50vw;
-        height:25vw;
+        left:12%;
+        width:76vw;
+        height:38vw;
     }
     .mainL{
-        --totalspace:calc(90vh - 50vw);
+        --totalspace:calc(90vh - 76vw);
         --thirdspace:calc(var(--totalspace) / 3);
         top:var(--thirdspace);
     }
     .mainR{
-        --totalspace:calc(90vh - 50vw);
+        --totalspace:calc(90vh - 76vw);
         --thirdspace:calc(var(--totalspace) * .66);
-        top:calc(var(--thirdspace) + 25vw )
+        top:calc(var(--thirdspace) + 38vw )
     }
 }
 

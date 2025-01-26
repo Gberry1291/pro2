@@ -38,11 +38,7 @@ import { AlertService } from '../../services/alert.service';
 })
 export class Alert{
 
- constructor(private alert: AlertService) {
-
-  }
-
-
+ constructor(private alert: AlertService) {}
   public display:Signal<string>=computed(()=>this.alert.display())
   public maintext:Signal<string>=computed(()=>this.alert.maintext())
   public subtext:Signal<string>=computed(()=>this.alert.subtext())
@@ -52,9 +48,7 @@ export class Alert{
       return true
     }else{return false}
   })
-
   public onORoff:Signal<string>=computed(()=>this.alert.display())
-
   pacman=true
   spinval=0
 
@@ -63,8 +57,6 @@ export class Alert{
 
   showdots=["blank",1,1,1,0,0,0,0,1]
   dran=7
-
-
   public async animanager(){
     this.eat()
     await new Promise(res => setTimeout(res, 5))
@@ -97,7 +89,6 @@ export class Alert{
     this.spinval+=45
     this.pacman=!this.pacman
   }
-
   public end(){
     this.alert.end()
   }

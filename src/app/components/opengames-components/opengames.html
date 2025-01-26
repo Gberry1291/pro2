@@ -1,4 +1,9 @@
-<div class="openpage">
+<div class="optionhouse">
+    <button (click)="narrowsearch('yourturn')" [ngClass]="['optionbutt',yourturnstyle(),('maintextcolor'+selectedstyle())]"><p class="centertext">{{worddic()[1]}}</p></button>
+    <button (click)="narrowsearch('notyourturn')" [ngClass]="['optionbutt',notyourturnstyle(),('maintextcolor'+selectedstyle())]"><p class="centertext">{{worddic()[4]}}</p></button>
+    <button (click)="narrowsearch('finishedgames')" [ngClass]="['optionbutt',finishedgamesstyle(),('maintextcolor'+selectedstyle())]"><p class="centertext">{{worddic()[5]}}</p></button>
+</div>
+<div [ngClass]="['openpage',('bodycolor'+selectedstyle())]">
 
     <ng-container *ngFor="let info of games()" >
         <a [routerLink]="['/board', { email: info.opp,oppuid:info.oppuid }]" *ngIf="info.yourturn && !info.over" [ngClass]="['opengame','alertborder',('bodycolor'+selectedstyle()),('hovertomain'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomaintext'+selectedstyle())]">
@@ -7,23 +12,29 @@
             <div class="wordhouse"><p class="buttontext alert">{{worddic()[1]}}</p></div>
         </a>
      </ng-container>
+
      <ng-container *ngFor="let info of games()" >
         <a [routerLink]="['/board', { email: info.opp,oppuid:info.oppuid }]" *ngIf="!info.yourturn && !info.over" [ngClass]="['opengame',('bodycolor'+selectedstyle()),('maintile'+selectedstyle()),('hovertomain'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomaintext'+selectedstyle())]">
             <div class="wordhouse"><p [ngClass]="['buttontext']">{{worddic()[0]}}</p></div>
             <div class="wordhouse"><p [ngClass]="['buttontext']">{{info.opp}}</p></div>
+            <div class="wordhouse"><p [ngClass]="['buttontext']">{{worddic()[4]}}</p></div>
         </a>
      </ng-container>
 
      <ng-container *ngFor="let info of games()" >
         <a [routerLink]="['/board', { email: info.opp,oppuid:info.oppuid }]" *ngIf="info.over && info.winner==user()?.email" [ngClass]="['opengame',('bodycolor'+selectedstyle()),('maintile'+selectedstyle()),('hovertomain'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomaintext'+selectedstyle())]">
-            <div class="wordhouse"><p [ngClass]="['buttontext']">Victory VS {{info.opp}}</p></div>
+            <div class="wordhouse"><p [ngClass]="['buttontext','bodytextcolor'+selectedstyle()]">{{worddic()[2]}}</p></div>
+            <div class="wordhouse"><p [ngClass]="['buttontext']">{{worddic()[0]}}</p></div>
+            <div class="wordhouse"><p class="buttontext">{{info.opp}}</p></div>
         </a>
      </ng-container>
+
      <ng-container *ngFor="let info of games()" >
         <a [routerLink]="['/board', { email: info.opp,oppuid:info.oppuid }]" *ngIf="info.over && info.winner!=user()?.email" [ngClass]="['opengame','alertborder',('bodycolor'+selectedstyle()),('maintile'+selectedstyle()),('hovertomain'+selectedstyle()),('secondbodytextcolor'+selectedstyle()),('hovertomaintext'+selectedstyle())]">
-            <div class="wordhouse"><p [ngClass]="['buttontext']">Lost VS {{info.opp}}</p></div>
+            <div class="wordhouse"><p [ngClass]="['buttontext','bodytextcolor'+selectedstyle()]">{{worddic()[3]}}</p></div>
+            <div class="wordhouse"><p [ngClass]="['buttontext']">{{worddic()[0]}}</p></div>
+            <div class="wordhouse"><p class="buttontext">{{info.opp}}</p></div>
         </a>
      </ng-container>
-    
 
 </div>

@@ -1,7 +1,7 @@
 import { Component,input,Signal,computed} from '@angular/core';
-import {KeyValuePipe,NgClass} from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Peice } from '../../board-data/board.state';
-import { transition, trigger, useAnimation,style,animate,state } from '@angular/animations';
+import { transition, trigger,style,animate,state } from '@angular/animations';
 import { StyleService } from '../../services/styleingservice';
 
 @Component({

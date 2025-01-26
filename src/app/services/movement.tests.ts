@@ -1,9 +1,6 @@
-import { Location,BoardLayout,legalmoves,Peice } from '../board-data/board.state';
-import { BuildBoard } from './board.service';
-import { Injectable} from '@angular/core';
+import { Location,BoardLayout,legalmoves,databank } from '../board-data/board.state';
 
-@Injectable({providedIn: 'root'})
-export class FindLegal {
+export class TestLegal {
     legals:legalmoves={
         legalmoves:[],
         special:false,
@@ -18,7 +15,10 @@ export class FindLegal {
     incheckby:Array<Array<number>>=[]
     kingline:Array<number>=[]
     behindKing:Array<number>=[]
-    constructor(private boardservice: BuildBoard) {
+
+    boardservice:databank
+    constructor(testboard: databank) {
+        this.boardservice=testboard
     }
     
     resetlegals(){
@@ -84,14 +84,14 @@ export class FindLegal {
         let newx=(Number(x)+addx).toString()
         let test:boolean=false
         let playeroptions=["player1","player2","player0","selected"]
-        if (this.boardservice.board().board[Number(newy+newx) as keyof BoardLayout]) {
+        if (this.boardservice.board[Number(newy+newx) as keyof BoardLayout]) {
             ifplayer.forEach(element => {
                 if (playeroptions.includes(element)) {
-                    if (this.boardservice.board().board[Number(newy+newx) as keyof BoardLayout]["player"]==element) {
+                    if (this.boardservice.board[Number(newy+newx) as keyof BoardLayout]["player"]==element) {
                         test=true
                     }
                 }else{
-                    if (this.boardservice.board().board[Number(newy+newx) as keyof BoardLayout]["peice"]==element) {
+                    if (this.boardservice.board[Number(newy+newx) as keyof BoardLayout]["peice"]==element) {
                         test=true
                     }
                 }   
@@ -114,7 +114,7 @@ export class FindLegal {
                 movelist.push(control)
                 progressX+=addx;
                 progressY+=addy;
-                let space=this.boardservice.board().board[Number(control) as keyof BoardLayout]
+                let space=this.boardservice.board[Number(control) as keyof BoardLayout]
                 if (ifpeice.includes(space.player)) {
                     keepgoing=false
                     if (space.peice=="K") {
@@ -132,8 +132,8 @@ export class FindLegal {
         let newy=(Number(y)+addy).toString()
         let newx=(Number(x)+addx).toString()
         let test:boolean=false
-        let latestlog=this.boardservice.board().log[0]
-        if (this.boardservice.board().board[Number(newy+newx) as keyof BoardLayout]) {
+        let latestlog=this.boardservice.log[0]
+        if (this.boardservice.board[Number(newy+newx) as keyof BoardLayout]) {
             if (latestlog.end==Number(newy+newx)&&latestlog.startpeice=="P"&&latestlog.startplayer==opponent) {
                 test=true
             }
@@ -141,7 +141,7 @@ export class FindLegal {
         if(test){
             this.legals.legalmoves.push(Number((Number(y)+direction).toString()+newx))
             this.legals.special=true;
-            this.legals.peice=this.boardservice.board().board[Number((Number(y)+direction).toString()+newx) as keyof BoardLayout]
+            this.legals.peice=this.boardservice.board[Number((Number(y)+direction).toString()+newx) as keyof BoardLayout]
             this.legals.changelist=[["",Number(y+x),"player0","P",turnplayer],["",Number(newy+newx),"player0","P",opponent],["P",Number((Number(y)+direction).toString()+newx),turnplayer,"","player0"]]
         }
     }
@@ -266,7 +266,7 @@ export class FindLegal {
         const kingsidecastle=turnplayer=="player1"?11:81
         const queensidecastle=turnplayer=="player1"?18:88
 // checks boardLOG for king or rook prior movement
-        this.boardservice.board().log.forEach(element => {
+        this.boardservice.log.forEach(element => {
             if (element.start==kinglocations||element.start==kingsidecastle) {
                 kingside=false
             }
@@ -279,7 +279,7 @@ export class FindLegal {
             let test2=this.zip(column,row,0,-2,["player0"])
             if (!test1 || this.opponentsLegals.includes(test1)) {kingside=false}
             if (!test2 || this.opponentsLegals.includes(test2)) {kingside=false}
-            if (this.boardservice.board().board[this.zip(column,row,0,-3,[turnplayer]) as keyof BoardLayout].peice!="C") {kingside=false}
+            if (this.boardservice.board[this.zip(column,row,0,-3,[turnplayer]) as keyof BoardLayout].peice!="C") {kingside=false}
         }else{kingside=false}
         if (this.zip(column,row,0,4,[turnplayer])&&queenside==true) {
             let test1=this.zip(column,row,0,1,["player0"])
@@ -288,12 +288,12 @@ export class FindLegal {
             if (!test1 || this.opponentsLegals.includes(test1)) {queenside=false}
             if (!test2 || this.opponentsLegals.includes(test2)) {queenside=false}
             if (!test3) {queenside=false}
-            if (this.boardservice.board().board[this.zip(column,row,0,4,[turnplayer]) as keyof BoardLayout].peice!="C") {queenside=false}
+            if (this.boardservice.board[this.zip(column,row,0,4,[turnplayer]) as keyof BoardLayout].peice!="C") {queenside=false}
         }else{queenside=false}
         if (kingside) {
             this.legals.legalmoves.push(this.zip(column,row,0,-2,["player0"]))
             this.legals.special=true;
-            this.legals.peice=this.boardservice.board().board[this.zip(column,row,0,-2,["player0"]) as keyof BoardLayout]
+            this.legals.peice=this.boardservice.board[this.zip(column,row,0,-2,["player0"]) as keyof BoardLayout]
             this.legals.changelist=[
                 ["",this.zip(column,row,0,-3,[turnplayer]),"player0","C",turnplayer],
                 ["K",this.zip(column,row,0,-2,["player0"]),turnplayer,"","player0"],
@@ -303,7 +303,7 @@ export class FindLegal {
         if (queenside) {
             this.legals.legalmoves.push(this.zip(column,row,0,2,["player0"]))
             this.legals.special2=true;
-            this.legals.peice2=this.boardservice.board().board[this.zip(column,row,0,2,["player0"]) as keyof BoardLayout]
+            this.legals.peice2=this.boardservice.board[this.zip(column,row,0,2,["player0"]) as keyof BoardLayout]
             this.legals.changelist2=[
                 ["",this.zip(column,row,0,4,[turnplayer]),"player0","C",turnplayer],
                 ["K",this.zip(column,row,0,2,["player0"]),turnplayer,"",turnplayer],
@@ -336,7 +336,7 @@ export class FindLegal {
 
         let revealables=["C","B","Q"]
         let foundcheck=false
-        for (let [key, value] of Object.entries(this.boardservice.board().board)) {
+        for (let [key, value] of Object.entries(this.boardservice.board)) {
             if (revealables.includes(value.peice) && value.player==turnplayer) {
                 this.moveManager({peice:value,index:key},turnplayer,opponent)
                 let checktest=this.lookForCheck(this.legals.legalmoves,opponent)
@@ -351,7 +351,7 @@ export class FindLegal {
     lookForCheck(legalmoves:Array<number>,opponent:string){
         let check:boolean=false
         legalmoves.forEach(element => {
-            let thisPeice=this.boardservice.board().board[element as keyof BoardLayout]
+            let thisPeice=this.boardservice.board[element as keyof BoardLayout]
             if (thisPeice.peice=="K"&&thisPeice.player==opponent) {
                 check=true
             }
@@ -366,7 +366,7 @@ export class FindLegal {
         this.opponentsLegals=[]
         this.kingline=[]
         this.behindKing=[]
-        for (let [key, value] of Object.entries(this.boardservice.board().board)) {
+        for (let [key, value] of Object.entries(this.boardservice.board)) {
             if (value.player==opponent) {
                 this.moveManager(
                     {peice:value,index:key},
@@ -385,7 +385,7 @@ export class FindLegal {
         }
     }
     GameOverCheck(GameOverFor:string,opponent:string,incheck:boolean){
-        for (let [key, value] of Object.entries(this.boardservice.board().board)) {
+        for (let [key, value] of Object.entries(this.boardservice.board)) {
             if (value.player==GameOverFor) {
                 // value.player="selected"
                 this.pinnedPeices(GameOverFor,opponent)
@@ -420,7 +420,7 @@ export class FindLegal {
             "B":[[1,1],[-1,1],[-1,-1],[1,-1]],
             "Q":[[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,1],[-1,-1],[1,-1]]
         }
-        for (let [key, value] of Object.entries(this.boardservice.board().board)) {
+        for (let [key, value] of Object.entries(this.boardservice.board)) {
             if (pinnables.includes(value.peice) && value.player==opponent) {
                 peicedirections[value.peice as keyof typeof peicedirections].forEach(element => {
                     this.searchforpinned(value.y,value.x,element[0],element[1],turnplayer)
